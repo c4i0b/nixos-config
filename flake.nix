@@ -20,6 +20,12 @@
       url = "github:NixOS/nixos-hardware/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # ACCELA + SLSsteam
+    enter-the-wired = {
+      url = "github:ciscosweater/enter-the-wired";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -28,6 +34,7 @@
     nixpkgs-unstable,
     home-manager,
     nixos-hardware,
+    enter-the-wired,
     ...
   } @ inputs: let
     # Supported systems for your flake packages, shell, etc.
