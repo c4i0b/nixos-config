@@ -60,18 +60,12 @@
       nvidiaSettings = true;
       package = config.boot.kernelPackages.nvidiaPackages.stable;
       prime = {
-        offload = {
-          enable = false;
-        };
+        offload.enable = false;
       };
     };
     graphics = {
       enable = true;
       enable32Bit = true;
-    };
-    bluetooth = {
-      enable = true;
-      powerOnBoot = true;
     };
   };
 
@@ -103,10 +97,6 @@
   virtualisation = {
     docker = {
       enable = true;
-      rootless = {
-        enable = true;
-        setSocketVariable = true;
-      };
     };
     libvirtd = {
       enable = true;
@@ -123,7 +113,6 @@
       enable = true;
       xkb = {
         layout = "us";
-        variant = "";
       };
       videoDrivers = ["nvidia"];
     };
@@ -142,14 +131,6 @@
       };
     };
 
-    printing.enable = true;
-
-    avahi = {
-      enable = true;
-      nssmdns4 = true;
-      openFirewall = true;
-    };
-
     pipewire = {
       enable = true;
       alsa = {
@@ -160,8 +141,6 @@
       jack.enable = true;
     };
 
-    chrony.enable = true;
-    pcscd.enable = true;
     flatpak.enable = true;
     fwupd.enable = true;
 
@@ -170,39 +149,31 @@
 
   programs = {
     fish.enable = true;
-    gnupg.agent.enable = true;
     steam = {
       enable = true;
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
       extraCompatPackages = [pkgs.proton-ge-bin];
     };
-    gamescope = {
-      enable = true;
-      capSysNice = true;
-    };
   };
 
   security = {
     rtkit.enable = true;
     polkit.enable = true;
-    sudo.wheelNeedsPassword = true;
   };
 
   systemd.services.nvidia-powerd.enable = true;
 
   fonts.packages = with pkgs; [
     nerd-fonts.caskaydia-cove
-    tela-icon-theme
-    adwaita-fonts
+    cascadia-code
   ];
 
   environment = {
     systemPackages = with pkgs; [
       bat
-      bottom
+      btop
       btrfs-progs
-      compsize
       curl
       eza
       fastfetch
@@ -210,66 +181,45 @@
       file
       fzf
       git
+      gdu
       gnumake
       htop
-      killall
-      lsof
+      lazydocker
+      lazygit
       mtr
       ncdu
-      nh
+      nil
       nix-index
+      nixfmt-rfc-style
+      nodejs
+      opencode
       pciutils
       ripgrep
       rsync
       snapper
-      tldr
+      stow
+      superfile
+      tealdeer
       tmux
       topgrade
       tree
       unzip
       usbutils
+      uv
       wget
-      whois
       wl-clipboard
       zip
       zstd
-
-      p7zip
-
-      nmap
-      tcpdump
 
       brave
       qbittorrent
       libreoffice
       remmina
-      ptyxis
-      gimp
-      inkscape
-
-      lutris
-      wine
-      winetricks
-      protontricks
-      protonplus
-      mangohud
-      gamescope
-
-      ntfs3g
-      cifs-utils
-      nfs-utils
-      sshfs
-      fuse
 
       bleachbit
-
-      gparted
       btrfs-assistant
-      baobab
-
-      dconf-editor
       gnome-tweaks
-      gnome-extensions-cli
+      dconf-editor
     ];
 
     gnome.excludePackages = with pkgs; [
@@ -280,11 +230,6 @@
       simple-scan
       snapshot
     ];
-  };
-
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [xdg-desktop-portal-gnome];
   };
 
   users.users.caio = {
@@ -300,8 +245,6 @@
       "video"
       "input"
       "networkmanager"
-      "disk"
-      "cdrom"
     ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII36LvhYgcFFJgpr3/lrnD7z/zp0EKBn2HFUep/0DiEZ"
