@@ -26,10 +26,6 @@
   nixpkgs = {
     # You can add overlays here
     overlays = [
-      # ACCELA package from enter-the-wired flake
-      (final: prev: {
-        accela = inputs.enter-the-wired.packages.${final.system}.default;
-      })
       # Add overlays your own flake exports (from overlays and pkgs dir):
       inputs.self.overlays.additions
       inputs.self.overlays.modifications

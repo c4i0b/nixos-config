@@ -1,5 +1,25 @@
 {
   "nodes": {
+    "enter-the-wired": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1779977391,
+        "narHash": "sha256-rcDfWcLxFQbS/bpSMu261mnyxxbccRN2HYFiJLG0b2Q=",
+        "owner": "ciscosweater",
+        "repo": "enter-the-wired",
+        "rev": "9208c084e98cc5e900354a0be814647f1d5c4bec",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ciscosweater",
+        "repo": "enter-the-wired",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -76,6 +96,7 @@
     },
     "root": {
       "inputs": {
+        "enter-the-wired": "enter-the-wired",
         "home-manager": "home-manager",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",

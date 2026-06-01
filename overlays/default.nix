@@ -2,7 +2,11 @@
 # These are arbitrary named and just some conventions I use, you can name then whenever and/or make as many as you want
 {inputs, ...}: {
   # This one brings our custom packages from the 'pkgs' directory
-  additions = final: _prev: import ../pkgs final.pkgs;
+  additions = final: _prev:
+    (import ../pkgs final.pkgs)
+    // {
+      accela = inputs.enter-the-wired.packages.${final.system}.default;
+    };
 
   # This one contains whatever you want to overlay
   # You can change versions, add patches, set compilation flags, anything really.
