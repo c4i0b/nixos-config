@@ -1,7 +1,6 @@
 # This is your home-manager configuration file.
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 #
-# To use, uncomment homeConfigurations in flake.nix.
 # Dotfile management is handled separately via GNU stow.
 {
   inputs,
@@ -54,8 +53,8 @@
   };
 
   # Add stuff for your user as you see fit:
-  # programs.home-manager.enable = true;
-  # programs.git.enable = true;
+  # programs.neovim.enable = true;
+  # home.packages = with pkgs; [ steam ];
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
