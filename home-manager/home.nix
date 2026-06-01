@@ -1,7 +1,6 @@
-# This is your home-manager configuration file.
+# This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
-#
-# Dotfile management is handled separately via GNU stow.
+# Dotfiles managed via stow; home-manager disabled in flake.nix.
 {
   inputs,
   lib,
