@@ -68,7 +68,7 @@
           nixos-hardware.nixosModules.common-cpu-amd
           nixos-hardware.nixosModules.common-gpu-nvidia
           # > Our main nixos configuration file <
-          ./hosts/Fedora
+          ./nixos/configuration.nix
         ];
       };
     };
@@ -77,15 +77,15 @@
     # Available through 'home-manager --flake .#caio@Fedora'
     # Uncomment to use home-manager standalone (dotfiles managed via stow):
     # homeConfigurations = {
-      #   "caio@Fedora" = home-manager.lib.homeManagerConfiguration {
-      #     # Home-manager requires 'pkgs' instance
-      #     pkgs = nixpkgs.legacyPackages.x86_64-linux;
-      #     extraSpecialArgs = {inherit inputs;};
-      #     modules = [
-      #       # > Our main home-manager configuration file <
-      #       ./home/caio
-      #     ];
-      #   };
+    #   "caio@Fedora" = home-manager.lib.homeManagerConfiguration {
+    #     # Home-manager requires 'pkgs' instance
+    #     pkgs = nixpkgs.legacyPackages.x86_64-linux;
+    #     extraSpecialArgs = {inherit inputs;};
+    #     modules = [
+    #       # > Our main home-manager configuration file <
+    #       ./home-manager/home.nix
+    #     ];
+    #   };
     # };
   };
 }
