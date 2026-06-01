@@ -50,7 +50,9 @@
       };
     };
 
-    # Uncomment to enable home-manager as a standalone tool:
+    # Standalone home-manager configuration entrypoint
+    # Available through 'home-manager --flake .#caio@Fedora'
+    # Uncomment the block below and run 'nix flake check' to validate.
     # homeConfigurations = {
     #   "caio@Fedora" = home-manager.lib.homeManagerConfiguration {
     #     pkgs = nixpkgs.legacyPackages.x86_64-linux;
