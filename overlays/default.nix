@@ -18,7 +18,7 @@
   };
 
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will
-  # be accessible through 'pkgs.unstablePkgs'
+  # be accessible through 'pkgs.unstablePkgs', and stable through 'pkgs.stablePkgs'
   unstable-packages = final: prev: {
     unstablePkgs = import inputs.nixpkgs-unstable {
       system = final.stdenv.hostPlatform.system;
