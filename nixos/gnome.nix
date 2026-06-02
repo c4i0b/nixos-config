@@ -2,6 +2,9 @@
   environment.systemPackages = with pkgs; [
     gnome-extensions-cli
     gnome-tweaks
+
+    gnomeExtensions.copyous
+    gnomeExtensions.brightness-control-using-ddcutil
   ];
 
   services = {
@@ -16,5 +19,18 @@
     yelp
     simple-scan
     snapshot
+  ];
+
+  programs.dconf.profiles.user.databases = [
+    {
+      settings = {
+        "org/gnome/shell" = {
+          enabled-extensions = [
+            "copyous@boerdereinar.dev"
+            "display-brightness-ddcutil@themightydeity.github.com"
+          ];
+        };
+      };
+    }
   ];
 }
