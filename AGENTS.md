@@ -77,6 +77,11 @@ pkgs/default.nix              custom derivations (empty skeleton)
 2. Run `nix flake check` to validate
 3. Run the rebuild command above
 
+### Push after meaningful changes
+- After rebuild succeeds, consider pushing to remote: `git push origin main`
+- Push early, push often — remote is backup and enables `nixos-rebuild` from flake URL on other machines
+- No need to push trivial/intermediate commits; use judgement
+
 ## Key constraints
 
 - Keep template comment markers: `# Opinionated:`, `# FIXME`, `# TODO`, `# > Our main nixos configuration file <`
