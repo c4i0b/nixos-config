@@ -15,7 +15,7 @@
       jack.enable = true;
     };
 
-    flatpak.enable = true;
+    # flatpak.enable = true;
     fwupd.enable = true;
   };
 
