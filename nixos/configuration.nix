@@ -82,6 +82,11 @@
     dates = "daily";
   };
 
+  systemd.services.nixos-upgrade.serviceConfig = {
+    Restart = "on-failure";
+    RestartSec = "2h";
+  };
+
   time.timeZone = "America/Sao_Paulo";
 
   i18n = {
