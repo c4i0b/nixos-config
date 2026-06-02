@@ -13,11 +13,17 @@
     }))
     gnomeExtensions.brightness-control-using-ddcutil
     gnomeExtensions.quick-settings-audio-panel
+    gnomeExtensions.pop-shell
+    gnomeExtensions.caffeine
   ];
 
   services = {
     desktopManager.gnome.enable = true;
     displayManager.gdm.enable = true;
+    displayManager.autoLogin = {
+      enable = true;
+      user = "caio";
+    };
   };
 
   hardware.i2c.enable = true;
@@ -40,6 +46,8 @@
             "copyous@boerdereinar.dev"
             "display-brightness-ddcutil@themightydeity.github.com"
             "quick-settings-audio-panel@rayzeq.github.io"
+            "pop-shell@system76.com"
+            "caffeine@patapon.info"
           ];
         };
       };
