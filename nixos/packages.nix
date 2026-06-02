@@ -51,6 +51,9 @@
     # Browsers
     unstablePkgs.brave
 
+    # Editors
+    unstablePkgs.vscodium
+
     # Desktop
     gnome-boxes
     qbittorrent
@@ -74,5 +77,6 @@
     bleachbit
     btrfs-assistant
     dconf-editor
+    ddcutil
   ];
 }

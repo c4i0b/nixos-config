@@ -26,6 +26,9 @@
     ./users.nix
     ./desktop.nix
     ./gnome.nix
+    ./snapper.nix
+    # ./niri.nix                   # Niri Wayland compositor — apply after snapper snapshot
+    # ./noctalia.nix               # Noctalia desktop shell — apply after snapper snapshot
     ./services.nix
     ./gaming.nix
     ./virtualisation.nix

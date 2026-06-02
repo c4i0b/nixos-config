@@ -7,6 +7,12 @@
       nix-generations = "nixos-rebuild list-generations";
       nix-rollback = "sudo nixos-rebuild switch --rollback";
       nix-code = "opencode /etc/nixos";
+      snap-list = "sudo snapper -c home list";
+      snap-create = "sudo snapper -c home create --description";
+      snap-status = "sudo snapper -c home status";
+      snap-undo = "sudo snapper -c home undochange";
+      snap-diff = "sudo snapper -c home diff";
+      snap-delete = "sudo snapper -c home delete";
     };
   };
 

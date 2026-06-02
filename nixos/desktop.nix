@@ -17,6 +17,12 @@
 
     # flatpak.enable = true;
     fwupd.enable = true;
+    upower.enable = true;
+  };
+
+  hardware = {
+    bluetooth.enable = true;
+    i2c.enable = true;
   };
 
   fonts.packages = with pkgs; [

@@ -26,8 +26,6 @@
     };
   };
 
-  hardware.i2c.enable = true;
-
   environment.gnome.excludePackages = with pkgs; [
     epiphany
     geary
