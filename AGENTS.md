@@ -72,7 +72,7 @@ Stable is the default package source. Only actively-developed tools use `pkgs.un
 - `nixos-hardware`: `common-cpu-amd`, `common-gpu-nvidia` (in nixosConfigurations modules, not as imports)
 - `enter-the-wired`: ACCELA + SLSsteam package
 
-`homeConfigurations` is commented out (dotfiles managed via GNU stow at `Projects/dotfiles`, not home-manager).
+`homeConfigurations` is commented out (dotfiles managed via GNU stow, not home-manager).
 
 ## NVIDIA RTX 5080 specifics
 
@@ -86,5 +86,4 @@ Stable is the default package source. Only actively-developed tools use `pkgs.un
 - Keep template comments style: `# Opinionated:`, `# FIXME`, `# TODO`, `# > Our main nixos configuration file <`
 - Config stays **inline in nixos/*.nix** — no split sub-modules
 - `hardware-configuration.nix` has `NEEDS_GENERATION` UUIDs — must be replaced with `nixos-generate-config` output on real install
-- Home-manager `home.stateVersion` still says `25.11` (intentional — HM is disabled)
 - `enter-the-wired` flake emits evaluation warning: `'system' renamed to 'stdenv.hostPlatform.system'` (upstream, not our issue)

@@ -64,9 +64,9 @@
     homeManagerModules = import ./modules/home-manager;
 
     # NixOS configuration entrypoint
-    # Available through 'nixos-rebuild --flake .#Fedora'
+    # Available through 'nixos-rebuild --flake .#nixos'
     nixosConfigurations = {
-      Fedora = nixpkgs.lib.nixosSystem {
+      nixos = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         modules = [
           # Hardware-specific modules
@@ -79,10 +79,10 @@
     };
 
     # Standalone home-manager configuration entrypoint
-    # Available through 'home-manager --flake .#caio@Fedora'
+    # Available through 'home-manager --flake .#caio@nixos'
     # Uncomment to use home-manager standalone (dotfiles managed via stow):
     # homeConfigurations = {
-    #   "caio@Fedora" = home-manager.lib.homeManagerConfiguration {
+    #   "caio@nixos" = home-manager.lib.homeManagerConfiguration {
     #     # Home-manager requires 'pkgs' instance
     #     pkgs = nixpkgs.legacyPackages.x86_64-linux;
     #     extraSpecialArgs = {inherit inputs;};
