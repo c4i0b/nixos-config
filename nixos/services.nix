@@ -6,6 +6,7 @@
       nix-cleanup = "sudo nix-collect-garbage -d && sudo nixos-rebuild boot --flake /etc/nixos";
       nix-generations = "nixos-rebuild list-generations";
       nix-rollback = "sudo nixos-rebuild switch --rollback";
+      nix-code = "opencode /etc/nixos";
     };
   };
 
