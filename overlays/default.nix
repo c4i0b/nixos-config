@@ -5,16 +5,23 @@
   additions = final: _prev:
     (import ../pkgs final.pkgs)
     // {
-      accela = inputs.enter-the-wired.packages.${final.system}.default;
+      # Import upstream default.nix with our pkgs (so appimage-run
+      # includes zstd via the modifications overlay below).
+      accela = (import "${inputs.enter-the-wired}/default.nix") { pkgs = final; };
+
+      # SLSsteam - Steamclient Modification for Linux (LD_AUDIT injection)
+      sls-steam = inputs.sls-steam.packages.${final.stdenv.hostPlatform.system}.sls-steam;
     };
 
   # This one contains whatever you want to overlay
   # You can change versions, add patches, set compilation flags, anything really.
   # https://nixos.wiki/wiki/Overlays
   modifications = final: prev: {
-    # example = prev.example.overrideAttrs (oldAttrs: rec {
-    # ...
-    # });
+    # Provide libzstd.so.1 inside the FHS env so PyQt6-based
+    # AppImages (e.g. ACCELA) can resolve it at runtime.
+    appimage-run = prev.appimage-run.override {
+      extraPkgs = pkgs: with pkgs; [ zstd ];
+    };
   };
 
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will

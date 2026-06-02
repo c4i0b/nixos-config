@@ -3,14 +3,24 @@
     gnome-extensions-cli
     gnome-tweaks
 
-    gnomeExtensions.copyous
+    gnomeExtensions.appindicator
+    (gnomeExtensions.copyous.overrideAttrs (old: {
+      buildInputs = (builtins.filter (x: x.name or "" != "libgda-6.0.0") (old.buildInputs or [])) ++ [ pkgs.libgda5 ];
+      preInstall = builtins.replaceStrings
+        [ "${pkgs.libgda6}/lib/girepository-1.0" ]
+        [ "${pkgs.libgda5}/lib/girepository-1.0" ]
+        old.preInstall;
+    }))
     gnomeExtensions.brightness-control-using-ddcutil
+    gnomeExtensions.quick-settings-audio-panel
   ];
 
   services = {
     desktopManager.gnome.enable = true;
     displayManager.gdm.enable = true;
   };
+
+  hardware.i2c.enable = true;
 
   environment.gnome.excludePackages = with pkgs; [
     epiphany
@@ -26,8 +36,10 @@
       settings = {
         "org/gnome/shell" = {
           enabled-extensions = [
+            "appindicatorsupport@rgcjonas.gmail.com"
             "copyous@boerdereinar.dev"
             "display-brightness-ddcutil@themightydeity.github.com"
+            "quick-settings-audio-panel@rayzeq.github.io"
           ];
         };
       };

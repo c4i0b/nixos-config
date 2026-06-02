@@ -6,6 +6,7 @@
     fd
     file
     fzf
+    gh
     git
     gdu
     gnumake
@@ -16,6 +17,7 @@
     ncdu
     nil
     nix-index
+    nix-search
     nixfmt
     nodejs
     pciutils
@@ -54,9 +56,12 @@
     unstablePkgs.libreoffice
     remmina
 
+    # Theming
+    tela-icon-theme
+
     # Gaming
+    heroic
     protontricks
-    protonplus
 
     # System utilities
     bleachbit

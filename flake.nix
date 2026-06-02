@@ -22,7 +22,13 @@
     # ACCELA + SLSsteam
     enter-the-wired = {
       url = "github:ciscosweater/enter-the-wired";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
+    # SLSsteam - Steamclient Modification for Linux
+    sls-steam = {
+      url = "github:AceSLS/SLSsteam";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
 
@@ -33,6 +39,7 @@
     home-manager,
     nixos-hardware,
     enter-the-wired,
+    sls-steam,
     ...
   } @ inputs: let
     # Supported systems for your flake packages, shell, etc.
