@@ -83,7 +83,7 @@
   system.autoUpgrade = {
     enable = true;
     flake = "github:c4i0b/nixos-config";
-    randomizedDelaySec = "6h";
+    randomizedDelaySec = "1h";
     dates = "daily";
   };
 
@@ -119,7 +119,7 @@
     <dead_acute> <c> : "ç"
   '';
 
-  console.keyMap = "us-intl";
+  console.keyMap = "us-acentos";
 
   services.xserver.xkb = {
     layout = "us";
