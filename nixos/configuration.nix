@@ -92,7 +92,12 @@
     };
   };
 
-  console.keyMap = "us";
+  console.keyMap = "us-intl";
+
+  services.xserver.xkb = {
+    layout = "us";
+    variant = "intl";
+  };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "26.05";
