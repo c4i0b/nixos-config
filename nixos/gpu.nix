@@ -1,5 +1,8 @@
 {config, pkgs, ...}: {
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver = {
+    enable = true;
+    xkb.layout = "us";
+  };
 
   hardware.nvidia = {
     open = true;
