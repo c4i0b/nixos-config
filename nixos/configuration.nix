@@ -75,23 +75,11 @@
     };
   };
 
-  systemd = {
-    services.nixos-upgrade = {
-      description = "NixOS auto-update";
-      serviceConfig = {
-        Type = "oneshot";
-        ExecStart = "${pkgs.nixos-rebuild}/bin/nixos-rebuild switch --flake . --upgrade --no-daemon";
-      };
-    };
-
-    timers.nixos-upgrade = {
-      wantedBy = ["timers.target"];
-      timerConfig = {
-        OnCalendar = "daily";
-        RandomizedDelaySec = "6h";
-        Persistent = true;
-      };
-    };
+  system.autoUpgrade = {
+    enable = true;
+    flake = "github:c4i0b/nixos-config";
+    randomizedDelaySec = "6h";
+    dates = "daily";
   };
 
   time.timeZone = "America/Sao_Paulo";
