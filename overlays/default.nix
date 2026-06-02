@@ -22,6 +22,16 @@
     appimage-run = prev.appimage-run.override {
       extraPkgs = pkgs: with pkgs; [ zstd ];
     };
+
+    # Pop Shell: track master_noble branch via flake input
+    gnomeExtensions =
+      prev.gnomeExtensions
+      // {
+        pop-shell = prev.gnomeExtensions.pop-shell.overrideAttrs (old: {
+          version = inputs.pop-shell.shortRev or inputs.pop-shell.lastModifiedDate;
+          src = inputs.pop-shell;
+        });
+      };
   };
 
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will

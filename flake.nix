@@ -30,6 +30,12 @@
       url = "github:AceSLS/SLSsteam";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+
+    # Pop Shell - keyboard-driven GNOME layer (master_noble branch)
+    pop-shell = {
+      url = "github:pop-os/shell/master_noble";
+      flake = false;
+    };
   };
 
   outputs = {
@@ -40,6 +46,7 @@
     nixos-hardware,
     enter-the-wired,
     sls-steam,
+    pop-shell,
     ...
   } @ inputs: let
     # Supported systems for your flake packages, shell, etc.
