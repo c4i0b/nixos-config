@@ -1,68 +1,62 @@
-{pkgs, ...}: let
-  u = pkgs.unstablePkgs;
-  s = pkgs;
-in {
-  environment.systemPackages = [
-    pkgs.accela
+{pkgs, ...}: {
+  environment.systemPackages = with pkgs; [
+    accela
+    btrfs-progs
+    curl
+    fd
+    file
+    fzf
+    git
+    gdu
+    gnumake
+    htop
+    lazydocker
+    lazygit
+    mtr
+    ncdu
+    nil
+    nix-index
+    nixfmt
+    nodejs
+    pciutils
+    python3
+    ripgrep
+    rsync
+    snapper
+    stow
+    tmux
+    topgrade
+    tree
+    unzip
+    usbutils
+    uv
+    wget
+    wl-clipboard
+    xcb-util-cursor
+    zip
+    zstd
 
-    # Default: unstable
-    u.bat
-    u.btop
-    u.eza
-    u.fastfetch
-    u.opencode
-    u.superfile
-    u.tealdeer
+    unstablePkgs.bat
+    unstablePkgs.btop
+    unstablePkgs.eza
+    unstablePkgs.fastfetch
+    unstablePkgs.opencode
+    unstablePkgs.superfile
+    unstablePkgs.tealdeer
 
-    u.btrfs-progs
-    u.curl
-    u.fd
-    u.file
-    u.fzf
-    u.git
-    u.gdu
-    u.gnumake
-    u.htop
-    u.lazydocker
-    u.lazygit
-    u.mtr
-    u.ncdu
-    u.nil
-    u.nix-index
-    u.nixfmt
-    u.nodejs
-    u.pciutils
-    u.python3
-    u.ripgrep
-    u.rsync
-    u.snapper
-    u.stow
-    u.tmux
-    u.topgrade
-    u.tree
-    u.unzip
-    u.usbutils
-    u.uv
-    u.wget
-    u.wl-clipboard
-    u.xcb-util-cursor
-    u.zip
-    u.zstd
+    brave
+    qbittorrent
+    rclone
+    libreoffice
+    remmina
 
-    u.bleachbit
-    u.btrfs-assistant
-    u.gnome-extensions-cli
-    u.gnome-tweaks
-    u.dconf-editor
+    protontricks
+    protonplus
 
-    u.brave
-    u.qbittorrent
-    u.rclone
-
-    # Stable: critical desktop apps
-    s.libreoffice
-    s.remmina
-    s.protontricks
-    s.protonplus
+    bleachbit
+    btrfs-assistant
+    gnome-extensions-cli
+    gnome-tweaks
+    dconf-editor
   ];
 }
