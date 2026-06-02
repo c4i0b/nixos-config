@@ -36,6 +36,7 @@
     zip
     zstd
 
+    # Actively developed (unstable for latest releases)
     unstablePkgs.bat
     unstablePkgs.btop
     unstablePkgs.eza
@@ -44,15 +45,20 @@
     unstablePkgs.superfile
     unstablePkgs.tealdeer
 
-    brave
+    # Browsers
+    unstablePkgs.brave
+
+    # Desktop
     qbittorrent
     rclone
-    libreoffice
+    unstablePkgs.libreoffice
     remmina
 
+    # Gaming
     protontricks
     protonplus
 
+    # System utilities
     bleachbit
     btrfs-assistant
     gnome-extensions-cli
