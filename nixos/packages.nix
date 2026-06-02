@@ -6,13 +6,11 @@
     fd
     file
     fzf
-    gh
     git
     gdu
+    gh
     gnumake
-    htop
     lazydocker
-    lazygit
     mtr
     ncdu
     nil
@@ -31,7 +29,6 @@
     tree
     unzip
     usbutils
-    uv
     wget
     wl-clipboard
     xcb-util-cursor
@@ -46,21 +43,31 @@
     unstablePkgs.opencode
     unstablePkgs.superfile
     unstablePkgs.tealdeer
+    unstablePkgs.television
+
+    unstablePkgs.lazygit
+    unstablePkgs.uv
 
     # Browsers
     unstablePkgs.brave
 
     # Desktop
+    gnome-boxes
     qbittorrent
     rclone
     unstablePkgs.libreoffice
     remmina
+    winboat
 
     # Theming
     tela-icon-theme
 
+    # Communication
+    zapzap
+
     # Gaming
     heroic
+    ludusavi
     protontricks
 
     # System utilities

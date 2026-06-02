@@ -9,5 +9,15 @@
         swtpm.enable = true;
       };
     };
+
+    vmware.host = {
+      enable = true;
+      package = pkgs.unstablePkgs.vmware-workstation;
+      extraConfig = ''
+        mks.gl.allowUnsupportedDrivers = "TRUE"
+        mks.vk.allowUnsupportedDevices = "TRUE"
+      '';
+    };
   };
+
 }
