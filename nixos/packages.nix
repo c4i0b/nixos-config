@@ -61,8 +61,6 @@
     # System utilities
     bleachbit
     btrfs-assistant
-    gnome-extensions-cli
-    gnome-tweaks
     dconf-editor
   ];
 }

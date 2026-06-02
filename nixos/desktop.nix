@@ -5,9 +5,6 @@
       xkb.layout = "us";
     };
 
-    desktopManager.gnome.enable = true;
-    displayManager.gdm.enable = true;
-
     pipewire = {
       enable = true;
       alsa = {
@@ -25,14 +22,5 @@
   fonts.packages = with pkgs; [
     nerd-fonts.caskaydia-cove
     cascadia-code
-  ];
-
-  environment.gnome.excludePackages = with pkgs; [
-    epiphany
-    geary
-    totem
-    yelp
-    simple-scan
-    snapshot
   ];
 }

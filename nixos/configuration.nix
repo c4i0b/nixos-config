@@ -25,6 +25,7 @@
     ./networking.nix
     ./users.nix
     ./desktop.nix
+    ./gnome.nix
     ./services.nix
     ./gaming.nix
     ./virtualisation.nix
