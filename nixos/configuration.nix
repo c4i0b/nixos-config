@@ -16,11 +16,19 @@
     # inputs.hardware.nixosModules.common-cpu-amd
     # inputs.hardware.nixosModules.common-ssd
 
-    # You can also split up your configuration and import pieces of it here:
-    # ./users.nix
-
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
+
+    # Split configuration modules
+    ./hardware.nix
+    ./networking.nix
+    ./users.nix
+    ./desktop.nix
+    ./services.nix
+    ./gaming.nix
+    ./virtualisation.nix
+    ./packages.nix
+    ./browser-policies.nix
   ];
 
   nixpkgs = {
@@ -65,30 +73,6 @@
     };
   };
 
-  boot = {
-    loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
-    };
-    supportedFilesystems = ["btrfs" "ntfs"];
-    kernelParams = [
-      "nvidia-drm.modeset=1"
-      "nvidia-drm.fbdev=1"
-    ];
-    initrd = {
-      systemd.enable = true;
-      kernelModules = ["nvme" "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm"];
-    };
-    kernelModules = ["nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm"];
-    extraModulePackages = [config.boot.kernelPackages.nvidia_x11];
-  };
-
-  networking = {
-    hostName = "Fedora";
-    networkmanager.enable = true;
-    firewall.enable = true;
-  };
-
   time.timeZone = "America/Sao_Paulo";
 
   i18n = {
@@ -107,181 +91,6 @@
   };
 
   console.keyMap = "us";
-
-  users.users = {
-    caio = {
-      initialPassword = "correcthorsebatterystaple";
-      isNormalUser = true;
-      openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII36LvhYgcFFJgpr3/lrnD7z/zp0EKBn2HFUep/0DiEZ"
-      ];
-      extraGroups = ["wheel" "docker" "libvirtd" "kvm" "audio" "video" "input" "networkmanager"];
-    };
-  };
-
-  services = {
-    xserver = {
-      enable = true;
-      xkb.layout = "us";
-      videoDrivers = ["nvidia"];
-    };
-
-    desktopManager.gnome.enable = true;
-    displayManager.gdm = {
-      enable = true;
-      wayland = true;
-    };
-
-    pipewire = {
-      enable = true;
-      alsa = {
-        enable = true;
-        support32Bit = true;
-      };
-      pulse.enable = true;
-      jack.enable = true;
-    };
-
-    flatpak.enable = true;
-    fwupd.enable = true;
-
-    # This setups a SSH server. Very important if you're setting up a headless system.
-    # Feel free to remove if you don't need it.
-    openssh = {
-      enable = true;
-      settings = {
-        # Opinionated: forbid root login through SSH.
-        PermitRootLogin = "no";
-        # Opinionated: use keys only.
-        # Remove if you want to SSH using passwords
-        PasswordAuthentication = false;
-      };
-    };
-
-    udev.packages = with pkgs; [steam];
-  };
-
-  programs = {
-    fish.enable = true;
-    steam = {
-      enable = true;
-      remotePlay.openFirewall = true;
-      dedicatedServer.openFirewall = true;
-      extraCompatPackages = [];
-    };
-  };
-
-  security = {
-    rtkit.enable = true;
-    polkit.enable = true;
-  };
-
-  fonts.packages = with pkgs; [
-    nerd-fonts.caskaydia-cove
-    cascadia-code
-  ];
-
-  environment = {
-    systemPackages = with pkgs; [
-      # From stable nixpkgs
-      accela
-      btrfs-progs
-      curl
-      fd
-      file
-      fzf
-      git
-      gdu
-      gnumake
-      htop
-      lazydocker
-      lazygit
-      mtr
-      ncdu
-      nil
-      nix-index
-      nixfmt-rfc-style
-      nodejs
-      pciutils
-      python3
-      ripgrep
-      rsync
-      snapper
-      stow
-      tmux
-      topgrade
-      tree
-      unzip
-      usbutils
-      uv
-      wget
-      wl-clipboard
-      xcb-util-cursor
-      zip
-      zstd
-
-      # From unstable nixpkgs (actively developed, benefits from latest releases)
-      unstablePkgs.bat
-      unstablePkgs.btop
-      unstablePkgs.eza
-      unstablePkgs.fastfetch
-      unstablePkgs.opencode
-      unstablePkgs.superfile
-      unstablePkgs.tealdeer
-
-      # Desktop apps
-      brave
-      qbittorrent
-      libreoffice
-      remmina
-
-      protontricks
-      protonplus
-
-      bleachbit
-      btrfs-assistant
-      gnome-extensions-cli
-      gnome-tweaks
-      dconf-editor
-    ];
-    gnome.excludePackages = with pkgs; [
-      epiphany
-      geary
-      totem
-      yelp
-      simple-scan
-      snapshot
-    ];
-  };
-
-  hardware = {
-    nvidia = {
-      modesetting.enable = true;
-      powerManagement.enable = true;
-      open = false;
-      nvidiaSettings = true;
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
-      prime.offload.enable = false;
-    };
-    graphics = {
-      enable = true;
-      enable32Bit = true;
-    };
-  };
-
-  systemd.services.nvidia-powerd.enable = true;
-
-  virtualisation = {
-    docker.enable = true;
-    libvirtd = {
-      enable = true;
-      qemu = {
-        package = pkgs.qemu_kvm;
-        runAsRoot = true;
-        swtpm.enable = true;
-      };
-    };
-  };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "25.11";
