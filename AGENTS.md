@@ -46,6 +46,16 @@ pkgs/default.nix              custom derivations (empty skeleton)
 
 ## Patterns
 
+### When in doubt, search first
+- Before writing custom config, search the web (NixOS wiki, nixpkgs manual, GitHub, discourse) for existing patterns
+- Before adding a new service or feature, check if nixpkgs already has a module for it — many things are a one-liner
+- Prefer upstream module options over manual config — they handle edge cases and survive refactors
+
+### Maintainability
+- When integrating modules, prefer the approach that minimizes future maintenance burden: less manual config, more declarative options
+- Avoid tinkering with internal module workings — use the public API (module options), not by overriding internal derivations
+- If a module option exists, use it; only drop to raw config files as last resort
+
 ### Adding a new system package
 1. Open `nixos/packages.nix`
 2. Add to `environment.systemPackages`
