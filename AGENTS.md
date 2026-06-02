@@ -57,7 +57,7 @@ pkgs/default.nix              custom derivations (empty skeleton)
 3. If it depends on external flakes, add the input in `flake.nix` and pass via `specialArgs`
 
 ### Switching desktop environment
-- Delete `nixos/gnome.nix`, rewrite `nixos/desktop.nix` — no other changes needed
+- Comment out the current DE module import in `configuration.nix`, add the new one — never delete, enables easy revert
 - GPU module (`gpu.nix`) is DE-agnostic, keep as-is
 
 ### Rebuild workflow
