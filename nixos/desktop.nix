@@ -22,11 +22,6 @@
     fwupd.enable = true;
   };
 
-  security = {
-    rtkit.enable = true;
-    polkit.enable = true;
-  };
-
   fonts.packages = with pkgs; [
     nerd-fonts.caskaydia-cove
     cascadia-code
