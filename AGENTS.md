@@ -50,6 +50,8 @@ pkgs/default.nix              custom derivations (empty skeleton)
 - Before writing custom config, search the web (NixOS wiki, nixpkgs manual, GitHub, discourse) for existing patterns
 - Before adding a new service or feature, check if nixpkgs already has a module for it — many things are a one-liner
 - Prefer upstream module options over manual config — they handle edge cases and survive refactors
+- Use `nix-search <query>` to find packages; `nix-search --exact false <query>` for fuzzy/broader matches
+- Run `nix-search --index --flake nixpkgs` periodically to keep the index fresh
 
 ### Maintainability
 - When integrating modules, prefer the approach that minimizes future maintenance burden: less manual config, more declarative options
