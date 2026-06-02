@@ -41,7 +41,7 @@ pkgs/default.nix              custom derivations (empty skeleton)
 ### Overlay system
 
 - `additions`: custom packages from `pkgs/` + packages from external flakes
-- `modifications`: package overrides (appimage-run extra deps, gnome extension overrides)
+- `modifications`: package overrides and patches
 - `unstable-packages`: exposes `pkgs.unstablePkgs` from nixpkgs-unstable; use for actively-developed tools that need latest releases
 
 ## Patterns
@@ -65,15 +65,6 @@ pkgs/default.nix              custom derivations (empty skeleton)
 2. Run `nix flake check` to validate
 3. Run the rebuild command above
 
-## Hardware specifics
-
-- **CPU**: AMD Ryzen 7800X3D — `common-cpu-amd` nixos-hardware module
-- **GPU**: NVIDIA RTX 5080 (Blackwell) — `open = true` REQUIRED (proprietary modules unsupported), `nvidiaPackages.stable`, no iGPU so `prime.offload.enable = false`
-- **GPU Module**: `nixos/gpu.nix` handles all GPU config — `nixos-hardware common-gpu-nvidia` is in flake.nix modules
-- **Kernel**: `linuxPackages_latest`
-- **Boot**: systemd-boot, timeout 0
-
 ## Key constraints
 
 - Keep template comment markers: `# Opinionated:`, `# FIXME`, `# TODO`, `# > Our main nixos configuration file <`
-- Watch for evaluation warnings from external flakes (e.g. enter-the-wired `'system' renamed to 'stdenv.hostPlatform.system'` — upstream issue, not ours)
