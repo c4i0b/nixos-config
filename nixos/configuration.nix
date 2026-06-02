@@ -20,7 +20,7 @@
     ./hardware-configuration.nix
 
     # Split configuration modules
-    ./hardware.nix
+    ./gpu.nix
     ./networking.nix
     ./users.nix
     ./desktop.nix

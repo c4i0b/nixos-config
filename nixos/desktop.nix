@@ -3,7 +3,6 @@
     xserver = {
       enable = true;
       xkb.layout = "us";
-      videoDrivers = ["nvidia"];
     };
 
     desktopManager.gnome.enable = true;
