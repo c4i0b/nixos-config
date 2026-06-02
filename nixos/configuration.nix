@@ -92,6 +92,16 @@
     };
   };
 
+  environment.sessionVariables = {
+    XCOMPOSEFILE = "/etc/XCompose";
+  };
+
+  environment.etc."XCompose".text = ''
+    include "%L"
+    <dead_acute> <C> : "Ç"
+    <dead_acute> <c> : "ç"
+  '';
+
   console.keyMap = "us-intl";
 
   services.xserver.xkb = {
