@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   users.users = {
+    root.shell = pkgs.fish;
     caio = {
       initialPassword = "correcthorsebatterystaple";
       isNormalUser = true;
