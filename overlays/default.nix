@@ -31,21 +31,6 @@
           version = inputs.pop-shell.shortRev or inputs.pop-shell.lastModifiedDate;
           src = inputs.pop-shell;
         });
-
-        dash-to-dock = prev.gnomeExtensions.buildShellExtension {
-          pname = "dash-to-dock";
-          uuid = "dash-to-dock@micxgx.gmail.com";
-          name = "gnome-shell-extension-dash-to-dock";
-          version = 105;
-          src = prev.fetchzip {
-            url = "https://extensions.gnome.org/extension-data/dash-to-dockmicxgx.gmail.com.v105.shell-extension.zip";
-            sha256 = "sha256-z0oopkiOgclCA2KteVTX9YWke8c31B7Q1xMCL7BPo18=";
-          };
-          meta = {
-            description = "A dock for the GNOME Shell";
-            license = prev.lib.licenses.gpl2Plus;
-          };
-        };
       };
   };
 

@@ -25,11 +25,11 @@
     ./networking.nix
     ./users.nix
     ./desktop.nix
-    ./niri.nix
-    ./noctalia.nix
+    # ./niri.nix               # disabled for gnome — keep for easy revert
+    # ./noctalia.nix            # disabled for gnome — keep for easy revert
     ./input.nix
     ./snapper.nix
-    # ./gnome.nix                # disabled for niri — keep for easy revert
+    ./gnome.nix
     ./services.nix
     ./gaming.nix
     ./virtualisation.nix
