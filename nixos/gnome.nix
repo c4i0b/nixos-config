@@ -1,5 +1,7 @@
 { config, lib, pkgs, ... }:
-{
+let
+  inherit (lib.gvariant) mkTuple;
+in {
   environment.systemPackages = with pkgs; [
     gnome-extensions-cli
     gnome-tweaks
@@ -17,6 +19,7 @@
     gnomeExtensions.pop-shell
     gnomeExtensions.caffeine
     gnomeExtensions.dash-to-dock
+    gnomeExtensions.screentospace
   ];
 
   services = {
@@ -49,9 +52,23 @@
             "dash-to-dock@micxgx.gmail.com"
             "pop-shell@system76.com"
             "caffeine@patapon.info"
+            "screentospace@dilzhan.dev"
           ];
+          always-show-log-out = true;
         };
       };
+    }
+    {
+      settings = {
+        "org/gnome/desktop/input-sources" = {
+          sources = [ (mkTuple [ "xkb" "us+intl" ]) ];
+          xkb-options = [ "altwin:swap_lalt_lwin" ];
+        };
+      };
+      locks = [
+        "/org/gnome/desktop/input-sources/sources"
+        "/org/gnome/desktop/input-sources/xkb-options"
+      ];
     }
     {
       keyfiles = with pkgs; [
@@ -76,10 +93,6 @@
           CONF
 
           cat > ${kdir}/01-keybindings.conf << 'CONF'
-          [org/gnome/desktop/input-sources]
-          sources=[('xkb', 'us+intl')]
-          xkb-options=['altwin:swap_lalt_lwin']
-
           [org/gnome/desktop/wm/keybindings]
           close=['<Super>q']
           toggle-maximized=['<Super>f']
@@ -179,6 +192,9 @@
           [org/gnome/shell/extensions/pop-shell]
           tile-by-default=false
           tile-enter=@as []
+          toggle-stacking=@as []
+          toggle-stacking-global=@as []
+          stacking-with-mouse=false
           tile-move-left-global=['<Super><Shift>Left']
           tile-move-right-global=['<Super><Shift>Right']
           tile-move-up-global=['<Super><Shift>Up']
@@ -195,6 +211,12 @@
           hot-keys=false
           hotkeys-show-dock=false
           hotkeys-overlay=false
+          disable-overview-on-startup=true
+
+          [org/gnome/shell/extensions/screentospace]
+          insert-workspace-after-current=true
+          trigger-on-fullscreen=true
+          trigger-on-maximize=false
           CONF
 
           cat > ${kdir}/04-nautilus.conf << 'CONF'
