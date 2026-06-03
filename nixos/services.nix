@@ -4,7 +4,7 @@
     shellAliases = {
       nix-rebuild = "git -C /etc/nixos add -A && sudo nixos-rebuild switch --flake /etc/nixos";
       nix-cleanup = "sudo nix-collect-garbage -d && sudo nixos-rebuild boot --flake /etc/nixos";
-      nix-generations = "nixos-rebuild list-generations";
+      nix-gens = "nixos-rebuild list-generations";
       nix-rollback = "sudo nixos-rebuild switch --rollback";
       nix-code = "opencode /etc/nixos";
       snap-list = "sudo snapper -c home list";
@@ -23,7 +23,9 @@
       Nice = 19;
       IOSchedulingClass = "idle";
     };
-    script = "${pkgs.topgrade}/bin/topgrade --disable system";
+    script = ''
+      ${pkgs.topgrade}/bin/topgrade --disable system || notify-send -u critical "Topgrade" "Update failed — check journalctl --user -u topgrade"
+    '';
   };
 
   systemd.user.timers.topgrade = {
