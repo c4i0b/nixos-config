@@ -21,11 +21,7 @@
 
   services.displayManager = {
     defaultSession = "niri";
-    gdm.enable = true;
-    autoLogin = {
-      enable = true;
-      user = "caio";
-    };
+    ly.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
