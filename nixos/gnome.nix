@@ -146,6 +146,11 @@ in {
           [org/gnome/mutter]
           dynamic-workspaces=true
           auto-maximize=false
+          edge-tiling=false
+
+          [org/gnome/mutter/keybindings]
+          toggle-tiled-left=@as []
+          toggle-tiled-right=@as []
           CONF
 
           cat > ${kdir}/02-media-keys.conf << 'CONF'
@@ -190,16 +195,26 @@ in {
 
           cat > ${kdir}/03-extensions.conf << 'CONF'
           [org/gnome/shell/extensions/pop-shell]
-          tile-by-default=false
+          tile-by-default=true
+          gap-inner=uint32 0
+          gap-outer=uint32 0
           tile-enter=@as []
           toggle-stacking=@as []
           toggle-stacking-global=@as []
           stacking-with-mouse=false
+          focus-left=['<Super>Left']
+          focus-right=['<Super>Right']
+          focus-up=['<Super>Up']
+          focus-down=['<Super>Down']
           tile-move-left-global=['<Super><Shift>Left']
           tile-move-right-global=['<Super><Shift>Right']
           tile-move-up-global=['<Super><Shift>Up']
           tile-move-down-global=['<Super><Shift>Down']
           toggle-tiling=['<Super>t']
+          pop-monitor-left=@as []
+          pop-monitor-right=@as []
+          pop-monitor-up=@as []
+          pop-monitor-down=@as []
 
           [org/gnome/shell/extensions/display-brightness-ddcutil]
           button-location=1.0
