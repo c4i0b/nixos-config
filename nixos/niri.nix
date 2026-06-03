@@ -22,7 +22,29 @@
   services.displayManager = {
     defaultSession = "niri";
     ly.enable = true;
+    autoLogin = {
+      enable = true;
+      user = "caio";
+    };
   };
+
+  programs.dconf.profiles.user.databases = [
+    {
+      settings = {
+        "org/nemo/list-view" = {
+          enable-folder-expansion = true;
+          default-zoom-level = "standard";
+        };
+        "org/nemo/preferences" = {
+          default-folder-viewer = "list-view";
+          "menu-config/background-menu-open-as-root" = false;
+          "menu-config/background-menu-open-in-terminal" = false;
+          "menu-config/selection-menu-open-as-root" = false;
+          "menu-config/selection-menu-open-in-terminal" = false;
+        };
+      };
+    }
+  ];
 
   environment.systemPackages = with pkgs; [
     xwayland-satellite
