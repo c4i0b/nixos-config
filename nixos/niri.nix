@@ -2,10 +2,7 @@
 {
   programs.niri.enable = true;
 
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
-
   security.polkit.enable = true;
-
   security.pam.services.swaylock = { };
 
   systemd.user.services.polkit-niri = {
@@ -23,6 +20,7 @@
   };
 
   services.displayManager = {
+    defaultSession = "niri";
     gdm.enable = true;
     autoLogin = {
       enable = true;
@@ -32,7 +30,9 @@
 
   environment.systemPackages = with pkgs; [
     xwayland-satellite
-    fuzzel
+    ghostty
+    nemo
+    playerctl
     swaylock
     swayidle
     brightnessctl

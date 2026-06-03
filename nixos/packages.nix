@@ -54,12 +54,17 @@
     # Editors
     unstablePkgs.vscodium
 
+    # Browsers
+    unstablePkgs.brave
+
     # Desktop
     gnome-boxes
     qbittorrent
     rclone
     unstablePkgs.libreoffice
     remmina
+    unstablePkgs.vesktop
+    unstablePkgs.pear-desktop
     winboat
 
     # Theming

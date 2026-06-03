@@ -28,7 +28,7 @@
     ./niri.nix
     ./noctalia.nix
     ./snapper.nix
-    ./gnome.nix
+    # ./gnome.nix                # disabled for niri — keep for easy revert
     ./services.nix
     ./gaming.nix
     ./virtualisation.nix
