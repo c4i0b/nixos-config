@@ -27,6 +27,7 @@
     ./desktop.nix
     ./niri.nix
     ./noctalia.nix
+    ./input.nix
     ./snapper.nix
     # ./gnome.nix                # disabled for niri — keep for easy revert
     ./services.nix
