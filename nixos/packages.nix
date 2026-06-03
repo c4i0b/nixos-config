@@ -59,6 +59,7 @@
     unstablePkgs.brave
 
     # Desktop
+    file-roller
     gnome-boxes
     qbittorrent
     rclone
