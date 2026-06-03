@@ -21,6 +21,7 @@
     pciutils
     python3
     ripgrep
+    jq
     rsync
     snapper
     stow
