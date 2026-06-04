@@ -17,11 +17,11 @@
         (pkgs.writeTextDir "share/wireplumber/wireplumber.conf.d/90-audio-disable.conf" ''
           monitor.alsa.rules = [
             {
-              matches = [ { device.vendor.id = "~0x10de*" } ]
+              matches = [ { device.vendor.id = "~0x10de.*" } ]
               actions = { update-props = { device.disabled = true } }
             }
             {
-              matches = [ { device.name = "~*MCHOSE_X9*" } ]
+              matches = [ { device.name = "~.*MCHOSE_X9.*" } ]
               actions = { update-props = { device.profile-set = "analog-only.conf" } }
             }
           ]
