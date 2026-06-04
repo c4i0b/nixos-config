@@ -8,9 +8,6 @@
 
   services.tailscale = {
     enable = true;
-    openFirewall = true;
     authKeyFile = "/var/lib/tailscale/auth.key";
-    useRoutingFeatures = "server";
-    extraUpFlags = ["--advertise-exit-node" "--accept-dns=false"];
   };
 }
