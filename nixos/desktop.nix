@@ -13,6 +13,30 @@
       };
       pulse.enable = true;
       jack.enable = true;
+      wireplumber.extraConfig."90-audio-disable" = {
+        "monitor.alsa.rules" = [
+          {
+            matches = [
+              { "device.name" = "~alsa_card.pci-0000_01_00.*"; }
+            ];
+            actions = {
+              "update-props" = {
+                "device.disabled" = true;
+              };
+            };
+          }
+          {
+            matches = [
+              { "node.name" = "~alsa_output.*.iec958*"; }
+            ];
+            actions = {
+              "update-props" = {
+                "node.disabled" = true;
+              };
+            };
+          }
+        ];
+      };
     };
 
     # flatpak.enable = true;
