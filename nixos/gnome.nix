@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 let
-  inherit (lib.gvariant) mkTuple;
+  inherit (lib.gvariant) mkInt32 mkTuple;
 in {
   environment.systemPackages = with pkgs; [
     gnome-extensions-cli
@@ -45,8 +45,8 @@ in {
     {
       settings = {
         "org/gnome/settings-daemon/plugins/power" = {
-          sleep-inactive-ac-timeout = 0;
-          sleep-inactive-battery-timeout = 0;
+          sleep-inactive-ac-timeout = mkInt32 0;
+          sleep-inactive-battery-timeout = mkInt32 0;
         };
       };
     }
