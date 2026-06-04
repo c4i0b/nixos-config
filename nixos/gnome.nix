@@ -250,7 +250,6 @@ in {
           hot-keys=false
           hotkeys-show-dock=false
           hotkeys-overlay=false
-          disable-overview-on-startup=true
 
           [org/gnome/shell/extensions/pip-on-top]
           stick=true
