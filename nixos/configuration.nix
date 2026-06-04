@@ -35,6 +35,7 @@
     ./services.nix
     ./shell.nix
     ./gaming.nix
+    ./streaming.nix
     ./virtualisation.nix
     ./packages.nix
     ./browser-policies.nix
