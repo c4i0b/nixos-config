@@ -44,6 +44,14 @@ in {
   programs.dconf.profiles.user.databases = [
     {
       settings = {
+        "org/gnome/settings-daemon/plugins/power" = {
+          sleep-inactive-ac-timeout = 0;
+          sleep-inactive-battery-timeout = 0;
+        };
+      };
+    }
+    {
+      settings = {
         "org/gnome/shell" = {
           enabled-extensions = [
             "appindicatorsupport@rgcjonas.gmail.com"
