@@ -26,13 +26,14 @@
     ./networking.nix
     ./users.nix
     ./desktop.nix
+    ./input.nix
+    ./gnome.nix
     # ./niri.nix               # always available as session
     # ./noctalia.nix           # always available as session
     # ./kde.nix                # KDE Plasma 6
-    ./input.nix
     ./snapper.nix
-    ./gnome.nix
     ./services.nix
+    ./shell.nix
     ./gaming.nix
     ./virtualisation.nix
     ./packages.nix
