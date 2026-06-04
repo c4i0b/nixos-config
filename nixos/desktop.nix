@@ -13,30 +13,20 @@
       };
       pulse.enable = true;
       jack.enable = true;
-      wireplumber.extraConfig."90-audio-disable" = {
-        "monitor.alsa.rules" = [
-          {
-            matches = [
-              { "device.name" = "~alsa_card.pci-0000_01_00.*"; }
-            ];
-            actions = {
-              "update-props" = {
-                "device.disabled" = true;
-              };
-            };
-          }
-          {
-            matches = [
-              { "node.name" = "~alsa_output.*.iec958*"; }
-            ];
-            actions = {
-              "update-props" = {
-                "node.disabled" = true;
-              };
-            };
-          }
-        ];
-      };
+      wireplumber.configPackages = [
+        (pkgs.writeTextDir "share/wireplumber/wireplumber.conf.d/90-audio-disable.conf" ''
+          monitor.alsa.rules = [
+            {
+              matches = [ { device.vendor.id = "~0x10de*" } ]
+              actions = { update-props = { device.disabled = true } }
+            }
+            {
+              matches = [ { device.name = "~*MCHOSE_X9*" } ]
+              actions = { update-props = { device.profile-set = "analog-only.conf" } }
+            }
+          ]
+        '')
+      ];
     };
 
     # flatpak.enable = true;
