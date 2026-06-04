@@ -1,3 +1,4 @@
+# GPU drivers and graphics configuration.
 {config, pkgs, ...}: {
   services.xserver.videoDrivers = ["nvidia"];
 

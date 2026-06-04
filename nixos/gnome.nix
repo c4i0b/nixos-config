@@ -1,3 +1,4 @@
+# Gnome Desktop Environment: extensions, settings, keybindings, and excluded packages.
 { config, lib, pkgs, ... }:
 let
   inherit (lib.gvariant) mkInt32 mkTuple;

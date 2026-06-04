@@ -1,3 +1,4 @@
+# Hostname, network manager, and firewall.
 {...}: {
   networking = {
     hostName = "nixos";

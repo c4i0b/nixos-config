@@ -1,3 +1,4 @@
+# User accounts, groups, and authorized keys.
 {pkgs, ...}: {
   users.users = {
     root.shell = pkgs.fish;

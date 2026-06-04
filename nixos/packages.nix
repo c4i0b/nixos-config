@@ -1,3 +1,4 @@
+# System-wide packages: add new entries to environment.systemPackages.
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     accela

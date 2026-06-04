@@ -1,3 +1,4 @@
+# System services, shell, and user timer units.
 {pkgs, ...}: {
   programs.fish = {
     enable = true;

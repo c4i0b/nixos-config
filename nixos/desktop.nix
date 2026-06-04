@@ -1,3 +1,4 @@
+# Desktop services shared across all DEs/compositors.
 {pkgs, ...}: {
   services = {
     xserver = {

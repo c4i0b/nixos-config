@@ -1,3 +1,4 @@
+# Custom Nix packages.
 pkgs: {
   accela = pkgs.stdenv.mkDerivation rec {
     pname = "accela";

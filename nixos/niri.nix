@@ -1,3 +1,4 @@
+# Niri Wayland compositor: packages, services, and settings.
 { config, lib, pkgs, ... }:
 {
   programs.niri.enable = true;

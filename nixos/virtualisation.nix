@@ -1,3 +1,4 @@
+# Virtualisation: containers and VMs.
 {pkgs, ...}: {
   virtualisation = {
     docker.enable = true;

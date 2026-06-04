@@ -1,3 +1,4 @@
+# Input methods, keyboard layout, and device settings.
 { lib, pkgs, ... }:
 let
   hide = name: desktopName: pkgs.makeDesktopItem {

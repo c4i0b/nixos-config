@@ -1,3 +1,4 @@
+# Bootloader, kernel, and initrd configuration.
 {pkgs, ...}: {
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;

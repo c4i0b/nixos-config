@@ -1,3 +1,4 @@
+# Gaming: Steam, Proton, and related tooling.
 {pkgs, ...}: let
   # SLSsteam injected via LD_AUDIT into Steam's FHS env.
   # Post-install: edit ~/.config/SLSsteam/config.yaml to set:

@@ -1,3 +1,4 @@
+# BTRFS snapshot scheduling.
 { ... }:
 {
   services.snapper = {

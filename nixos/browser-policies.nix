@@ -1,3 +1,4 @@
+# Browser policies and enterprise configuration.
 {...}: {
   programs.firefox = {
     enable = true;
