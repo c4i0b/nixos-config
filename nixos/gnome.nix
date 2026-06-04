@@ -19,11 +19,12 @@ in {
     gnomeExtensions.pop-shell
     gnomeExtensions.caffeine
     gnomeExtensions.dash-to-dock
-    gnomeExtensions.screentospace
+    gnomeExtensions.pip-on-top
   ];
 
   services = {
     desktopManager.gnome.enable = true;
+    desktopManager.gnome.sessionPath = [ pkgs.gtk3 ];
     displayManager.gdm.enable = true;
     displayManager.autoLogin = {
       enable = true;
@@ -52,7 +53,7 @@ in {
             "dash-to-dock@micxgx.gmail.com"
             "pop-shell@system76.com"
             "caffeine@patapon.info"
-            "screentospace@dilzhan.dev"
+            "pip-on-top@rafostar.github.com"
           ];
           always-show-log-out = true;
         };
@@ -228,10 +229,8 @@ in {
           hotkeys-overlay=false
           disable-overview-on-startup=true
 
-          [org/gnome/shell/extensions/screentospace]
-          insert-workspace-after-current=true
-          trigger-on-fullscreen=true
-          trigger-on-maximize=false
+          [org/gnome/shell/extensions/pip-on-top]
+          stick=true
           CONF
 
           cat > ${kdir}/04-nautilus.conf << 'CONF'
