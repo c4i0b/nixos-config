@@ -20,17 +20,17 @@
     ./hardware-configuration.nix
 
     # Split configuration modules
-    ./login.nix              # DM + autoLogin + defaultSession
+    ./login.nix
     ./boot.nix
     ./gpu.nix
     ./networking.nix
     ./users.nix
     ./desktop.nix
-    ./niri.nix               # always available as session
-    ./noctalia.nix           # always available as session
+    ./niri.nix
+    ./noctalia.nix
     ./input.nix
     ./snapper.nix
-    ./gnome.nix              # always available as session
+    ./gnome.nix
     ./services.nix
     ./gaming.nix
     ./virtualisation.nix

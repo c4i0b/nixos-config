@@ -35,6 +35,11 @@ in {
     yelp
     simple-scan
     snapshot
+    gnome-contacts
+    gnome-maps
+    gnome-weather
+    cheese
+    gnome-tour
   ];
 
   programs.dconf.profiles.user.databases = [

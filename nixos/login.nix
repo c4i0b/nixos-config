@@ -1,12 +1,17 @@
 # Display manager, auto-login, and session selection.
 { config, lib, pkgs, ... }: {
-  services.greetd = {
+  services.displayManager = {
+    defaultSession = "gnome";
+    autoLogin = {
+      enable = true;
+      user = "caio";
+    };
+  };
+
+  services.displayManager.ly = {
     enable = true;
     settings = {
-      default_session = {
-        command = "${pkgs.regreet}/bin/regreet";
-        user = "greeter";
-      };
+      animation = "matrix";
     };
   };
 }
