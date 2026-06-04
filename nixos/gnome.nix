@@ -218,8 +218,9 @@ in {
           pop-monitor-down=@as []
 
           [org/gnome/shell/extensions/display-brightness-ddcutil]
-          button-location=1.0
+          button-location=1
           hide-system-indicator=true
+          position-system-menu=3.0
           show-display-name=false
 
           [org/gnome/shell/extensions/dash-to-dock]
