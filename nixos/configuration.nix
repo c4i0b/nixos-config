@@ -80,9 +80,15 @@
     channel.enable = false;
     gc = {
       automatic = true;
-      dates = "weekly";
+      dates = "daily";
+      randomizedDelaySec = "1h";
       options = "--delete-older-than 7d";
     };
+  };
+
+  systemd.services.nix-gc.serviceConfig = {
+    Nice = 19;
+    IOSchedulingClass = "idle";
   };
 
   system.autoUpgrade = {
@@ -95,6 +101,8 @@
   systemd.services.nixos-upgrade.serviceConfig = {
     Restart = "on-failure";
     RestartSec = "2h";
+    Nice = 19;
+    IOSchedulingClass = "idle";
   };
 
   time.timeZone = "America/Sao_Paulo";
