@@ -56,19 +56,15 @@
     # Editors
     unstablePkgs.vscodium
 
-    # Browsers
-    unstablePkgs.brave
-
     # Desktop
     file-roller
     gnome-boxes
     qbittorrent
     rclone
-    unstablePkgs.libreoffice
+    libreoffice
     remmina
     unstablePkgs.vesktop
     unstablePkgs.pear-desktop
-    winboat
 
     # Theming
     numix-icon-theme-circle
@@ -83,7 +79,6 @@
 
     # System utilities
     bleachbit
-    btrfs-assistant
     dconf-editor
     ddcutil
   ];
