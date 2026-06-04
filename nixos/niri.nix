@@ -19,15 +19,6 @@
     };
   };
 
-  services.displayManager = {
-    defaultSession = "niri";
-    ly.enable = true;
-    autoLogin = {
-      enable = true;
-      user = "caio";
-    };
-  };
-
   programs.dconf.profiles.user.databases = [
     {
       settings = {

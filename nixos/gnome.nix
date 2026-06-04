@@ -25,11 +25,6 @@ in {
   services = {
     desktopManager.gnome.enable = true;
     desktopManager.gnome.sessionPath = [ pkgs.gtk3 ];
-    displayManager.gdm.enable = true;
-    displayManager.autoLogin = {
-      enable = true;
-      user = "caio";
-    };
   };
 
   environment.gnome.excludePackages = with pkgs; [
