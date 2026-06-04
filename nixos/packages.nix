@@ -70,7 +70,7 @@
     winboat
 
     # Theming
-    tela-icon-theme
+    numix-icon-theme-circle
 
     # Communication
     zapzap

@@ -85,7 +85,7 @@ in {
           color-scheme='prefer-dark'
           accent-color='teal'
           font-name='CaskaydiaCove Nerd Font 11'
-          icon-theme='Tela'
+          icon-theme='Numix-Circle'
 
           [org/gnome/desktop/background]
           picture-uri=""
