@@ -15,13 +15,5 @@
     kdePackages.kpat
   ];
 
-  environment.systemPackages = with pkgs; [
-    ghostty
-    numix-icon-theme-circle
-    nerd-fonts.caskaydia-cove
-    kdePackages.krohnkite
-    kdePackages.dynamic-workspaces
-  ];
-
   programs.ssh.askPassword = lib.mkForce "${pkgs.kdePackages.ksshaskpass.out}/bin/ksshaskpass";
 }
