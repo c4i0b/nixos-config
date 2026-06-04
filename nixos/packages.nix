@@ -11,7 +11,6 @@
     gdu
     gh
     gnumake
-    lazydocker
     mtr
     ncdu
     nil

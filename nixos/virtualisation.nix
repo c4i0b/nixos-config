@@ -1,7 +1,17 @@
 # Virtualisation: containers and VMs.
 {pkgs, ...}: {
+  environment.systemPackages = [
+    pkgs.lazydocker
+    pkgs.podman-desktop
+  ];
+
   virtualisation = {
-    docker.enable = true;
+    # docker.enable = true;
+    podman = {
+      enable = true;
+      dockerCompat = true;
+      dockerSocket.enable = true;
+    };
     libvirtd = {
       enable = true;
       qemu = {
