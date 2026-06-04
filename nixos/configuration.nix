@@ -28,7 +28,7 @@
     ./desktop.nix
     # ./niri.nix               # always available as session
     # ./noctalia.nix           # always available as session
-    ./kde.nix                # KDE Plasma 6
+    # ./kde.nix                # KDE Plasma 6
     ./input.nix
     ./snapper.nix
     ./gnome.nix
