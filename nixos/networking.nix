@@ -15,4 +15,7 @@
     enable = true;
     authKeyFile = "/var/lib/tailscale/auth.key";
   };
+
+  environment.systemPackages = [pkgs.localsend];
+
 }
