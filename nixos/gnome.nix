@@ -208,7 +208,7 @@ in {
           gap-inner=uint32 0
           gap-outer=uint32 0
           tile-enter=['<Super>r']
-          toggle-stacking=['f']
+          toggle-stacking=@as []
           toggle-stacking-global=@as []
           stacking-with-mouse=false
           management-orientation=['e']
