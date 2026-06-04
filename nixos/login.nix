@@ -11,9 +11,9 @@
     };
 
     defaultSession = "gnome";
-    autoLogin = {
-      enable = true;
-      user = "caio";
-    };
+    # autoLogin = {
+    #   enable = true;
+    #   user = "caio";
+    # };
   };
 }

@@ -76,6 +76,9 @@
     ludusavi
     protontricks
 
+    # Media players
+    smplayer
+
     # System utilities
     bleachbit
     dconf-editor
