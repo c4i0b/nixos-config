@@ -10,7 +10,7 @@
       };
     };
 
-    defaultSession = "cinnamon-wayland";
+    defaultSession = "cinnamon";
     autoLogin = {
       enable = true;
       user = "caio";
