@@ -6,6 +6,7 @@ in {
 
   environment.cinnamon.excludePackages = with pkgs; [
     celluloid
+    warpinator
   ];
 
   environment.sessionVariables.GTK_IM_MODULE = "xim";

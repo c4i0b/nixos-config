@@ -57,7 +57,7 @@
 
     # Desktop
     file-roller
-    github-desktop
+    unstablePkgs.github-desktop
     gnome-boxes
     qbittorrent
     rclone
