@@ -1,53 +1,64 @@
 # System-wide packages: add new entries to environment.systemPackages.
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
+
+    # Development
     accela
-    btrfs-progs
+    git
+    gh
+    gnumake
+    nil
+    nodejs
+    python3
+
+    # CLI tools
+    bat
+    btop
     curl
+    eza
     fd
     file
     fzf
-    git
     gdu
-    gh
-    gnumake
+    jq
     mtr
     ncdu
-    nil
+    ripgrep
+    rsync
+    tealdeer
+    topgrade
+    tree
+    uv
+    wget
+    zip
+    unzip
+    zstd
+
+    # Terminal
+    fastfetch
+    lazygit
     nix-index
     nix-search
     nixfmt
-    nodejs
-    pciutils
-    python3
-    ripgrep
-    jq
-    rsync
-    snapper
-    stow
+    opencode
+    superfile
+    television
     tmux
-    topgrade
-    tree
-    unzip
+    stow
+
+    # Filesystems and disks
+    btrfs-progs
+    snapper
+
+    # Hardware
+    ddcutil
+    pciutils
     usbutils
-    wget
+
+    # Clipboard
+    xclip
     wl-clipboard
     xcb-util-cursor
-    zip
-    zstd
-
-    # Actively developed (unstable for latest releases)
-    unstablePkgs.bat
-    unstablePkgs.btop
-    unstablePkgs.eza
-    unstablePkgs.fastfetch
-    unstablePkgs.opencode
-    unstablePkgs.superfile
-    unstablePkgs.tealdeer
-    unstablePkgs.television
-
-    unstablePkgs.lazygit
-    unstablePkgs.uv
 
     # Browsers
     unstablePkgs.brave
@@ -57,17 +68,14 @@
 
     # Desktop
     file-roller
-    unstablePkgs.github-desktop
     gnome-boxes
+    onlyoffice-desktopeditors
     qbittorrent
     rclone
-    onlyoffice-desktopeditors
     remmina
-    unstablePkgs.vesktop
+    unstablePkgs.github-desktop
     unstablePkgs.pear-desktop
-
-    # Theming
-    numix-icon-theme-circle
+    unstablePkgs.vesktop
 
     # Communication
     zapzap
@@ -83,6 +91,5 @@
     # System utilities
     bleachbit
     dconf-editor
-    ddcutil
   ];
 }
