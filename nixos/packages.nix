@@ -61,7 +61,7 @@
     gnome-boxes
     qbittorrent
     rclone
-    libreoffice
+    onlyoffice-desktopeditors
     remmina
     unstablePkgs.vesktop
     unstablePkgs.pear-desktop
