@@ -82,13 +82,6 @@
     # Communication
     zapzap
 
-    # Gaming
-    unstablePkgs.heroic
-    unstablePkgs.ludusavi
-    unstablePkgs.lutris
-    unstablePkgs.protonplus
-    unstablePkgs.protontricks
-
     # Media players
     smplayer
 

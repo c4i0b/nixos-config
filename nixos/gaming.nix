@@ -20,4 +20,13 @@ in {
   };
 
   services.udev.packages = [steam];
+
+  environment.systemPackages = with pkgs; [
+    unstablePkgs.heroic
+    unstablePkgs.ludusavi
+    unstablePkgs.lutris
+    unstablePkgs.protonplus
+    unstablePkgs.protontricks
+    unstablePkgs.mangojuice
+  ];
 }
