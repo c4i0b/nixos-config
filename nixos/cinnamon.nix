@@ -20,6 +20,12 @@ in {
           icon-theme = "Numix-Circle";
         };
 
+        "org/gnome/desktop/interface" = {
+          gtk-theme = "adw-gtk3-dark";
+          icon-theme = "Numix-Circle";
+          color-scheme = "prefer-dark";
+        };
+
         "org/cinnamon/theme" = {
           name = "Mint-Y-Dark-Red";
         };
