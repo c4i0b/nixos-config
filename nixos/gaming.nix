@@ -16,7 +16,6 @@ in {
   environment.sessionVariables = {
     PROTON_ENABLE_NVAPI = "1";
     PROTON_DLSS_UPGRADE = "1";
-    PROTON_ENABLE_WAYLAND = "1";
     DXVK_ASYNC = "1";
   };
 

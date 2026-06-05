@@ -1,5 +1,6 @@
 # System-wide packages: add new entries to environment.systemPackages.
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   environment.systemPackages = with pkgs; [
 
     # Development
@@ -23,6 +24,7 @@
     jq
     mtr
     ncdu
+    proton-vpn-cli
     ripgrep
     rsync
     tealdeer
