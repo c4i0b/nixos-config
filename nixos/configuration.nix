@@ -29,9 +29,9 @@
     ./input.nix
     # ./gnome.nix
     ./cinnamon.nix
+    # ./kde.nix
     # ./niri.nixos
     # ./noctalia.nix
-    # ./kde.nix
     ./snapper.nix
     ./services.nix
     ./shell.nix

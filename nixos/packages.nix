@@ -57,6 +57,7 @@
 
     # Desktop
     file-roller
+    github-desktop
     gnome-boxes
     qbittorrent
     rclone
