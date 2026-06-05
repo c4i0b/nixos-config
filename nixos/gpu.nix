@@ -15,4 +15,6 @@
     enable = true;
     enable32Bit = true;
   };
+
+  boot.kernelParams = [ "nvidia.AllowVRR=0" ];
 }

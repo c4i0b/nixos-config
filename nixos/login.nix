@@ -11,9 +11,9 @@
     };
 
     defaultSession = "cinnamon";
-    # autoLogin = {
-    #   enable = true;
-    #   user = "caio";
-    # };
+    autoLogin = {
+      enable = true;
+      user = "caio";
+    };
   };
 }

@@ -27,8 +27,8 @@
     ./users.nix
     ./desktop.nix
     ./input.nix
-    # ./gnome.nix
     ./cinnamon.nix
+    # ./gnome.nix
     # ./kde.nix
     # ./niri.nixos
     # ./noctalia.nix

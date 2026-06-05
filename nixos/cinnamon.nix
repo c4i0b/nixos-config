@@ -1,18 +1,21 @@
-{ lib, pkgs, ... }:
-let
-  mergedGsettings = pkgs.symlinkJoin {
-    name = "merged-gsettings-overrides";
-    paths = [
-      pkgs.gnome.nixos-gsettings-overrides
-      pkgs.cinnamon-gsettings-overrides
-    ];
-  };
-in {
+{ pkgs, ... }: {
   services.xserver.desktopManager.cinnamon.enable = true;
 
   environment.cinnamon.excludePackages = with pkgs; [
     celluloid
   ];
 
-  environment.sessionVariables.NIX_GSETTINGS_OVERRIDES_DIR = lib.mkForce "${mergedGsettings}/share/gsettings-schemas/nixos-gsettings-overrides/glib-2.0/schemas";
+  environment.sessionVariables.GTK_IM_MODULE = "xim";
+
+  programs.dconf.profiles.user.databases = [
+    {
+      settings = {
+        "org/cinnamon/desktop/interface" = {
+          font-name = "CaskaydiaCove Nerd Font 11";
+          gtk-theme = "Mint-L-Dark";
+          icon-theme = "Numix-Circle";
+        };
+      };
+    }
+  ];
 }
