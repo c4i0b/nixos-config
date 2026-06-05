@@ -26,6 +26,10 @@ in {
           color-scheme = "prefer-dark";
         };
 
+        "org/x/apps/portal" = {
+          color-scheme = "prefer-dark";
+        };
+
         "org/cinnamon/theme" = {
           name = "Mint-Y-Dark-Red";
         };
