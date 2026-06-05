@@ -8,7 +8,7 @@
       IOSchedulingClass = "idle";
     };
     script = ''
-      ${pkgs.topgrade}/bin/topgrade --disable system || notify-send -u critical "Topgrade" "Update failed — check journalctl --user -u topgrade"
+      ${pkgs.topgrade}/bin/topgrade --disable system
     '';
   };
 
