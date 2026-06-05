@@ -1,7 +1,6 @@
 {
   "recommendations": [
     "jnoortheen.nix-ide",
-    "kamadorieda.alejandra",
-    "mkhl.direnv"
+    "kamadorieda.alejandra"
   ]
 }
