@@ -83,9 +83,11 @@
     zapzap
 
     # Gaming
-    heroic
-    ludusavi
-    protontricks
+    unstablePkgs.heroic
+    unstablePkgs.ludusavi
+    unstablePkgs.lutris
+    unstablePkgs.protonplus
+    unstablePkgs.protontricks
 
     # Media players
     smplayer
