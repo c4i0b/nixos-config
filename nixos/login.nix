@@ -5,8 +5,6 @@
       enable = true;
       settings = {
         animation = "matrix";
-        ly_log = null;
-        session_log = null;
       };
     };
 
