@@ -10,7 +10,7 @@
       };
     };
 
-    defaultSession = "gnome";
+    defaultSession = "cinnamon";
     # autoLogin = {
     #   enable = true;
     #   user = "caio";

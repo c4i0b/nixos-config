@@ -28,6 +28,7 @@
     ./desktop.nix
     ./input.nix
     ./gnome.nix
+    ./cinnamon.nix
     # ./niri.nixos
     # ./noctalia.nix
     # ./kde.nix
@@ -35,7 +36,7 @@
     ./services.nix
     ./shell.nix
     ./gaming.nix
-    ./streaming.nix
+    #./streaming.nix
     ./virtualisation.nix
     ./packages.nix
     ./browser-policies.nix
