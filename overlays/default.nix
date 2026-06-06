@@ -20,7 +20,7 @@
     # Provide libzstd.so.1 inside the FHS env so PyQt6-based
     # AppImages (e.g. ACCELA) can resolve it at runtime.
     appimage-run = prev.appimage-run.override {
-      extraPkgs = pkgs: with pkgs; [ xcb-util-cursor zstd ];
+      extraPkgs = pkgs: with pkgs; [ xcb-util-cursor zstd icu ];
     };
 
     # Pop Shell: track master_noble branch via flake input
