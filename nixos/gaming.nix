@@ -27,6 +27,7 @@ in {
     unstablePkgs.lutris
     unstablePkgs.protonplus
     unstablePkgs.protontricks
+    unstablePkgs.hydralauncher
     unstablePkgs.mangojuice
   ];
 }
