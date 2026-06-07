@@ -85,9 +85,6 @@
     # Media players
     mpc-qt
 
-    # Subtitles
-    python3Packages.subliminal
-
     # System utilities
     bleachbit
     dconf-editor

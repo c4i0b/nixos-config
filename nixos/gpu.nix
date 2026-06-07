@@ -8,7 +8,7 @@
     powerManagement.enable = true;
     nvidiaSettings = true;
     forceFullCompositionPipeline = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.latest;
     prime.offload.enable = false;
   };
 
