@@ -26,7 +26,6 @@
     ./networking.nix
     ./users.nix
     ./desktop.nix
-    ./input.nix
     ./kde.nix
     # ./cinnamon.nix
     # ./gnome.nix

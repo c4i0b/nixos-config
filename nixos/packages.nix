@@ -88,6 +88,7 @@
     # System utilities
     bleachbit
     dconf-editor
+    gnome-calculator
     gnome-disk-utility
   ];
 }
