@@ -1,6 +1,14 @@
 { pkgs, ... }:
 let
-  inherit (pkgs.lib.gvariant) mkTuple;
+  keybindings-script = pkgs.writeShellScript "cinnamon-custom-keybindings" ''
+    dconf write /org/cinnamon/desktop/keybindings/custom-list "['custom0', 'custom1']"
+    dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom0/name "'Flameshot screenshot'"
+    dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom0/binding "['<Super><Shift>s']"
+    dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom0/command "'flameshot gui'"
+    dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom1/name "'CopyQ clipboard'"
+    dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom1/binding "['<Super>v']"
+    dconf write /org/cinnamon/desktop/keybindings/custom1/command "'copyq show'"
+  '';
 in {
   services.xserver.desktopManager.cinnamon.enable = true;
 
@@ -8,6 +16,37 @@ in {
     celluloid
     warpinator
   ];
+
+  environment.systemPackages = with pkgs; [
+    copyq
+    flameshot
+  ];
+
+  environment.etc."xdg/flameshot/flameshot.ini".text = ''
+    [General]
+    showDesktopNotification=false
+    disabledTrayIcon=true
+  '';
+
+  environment.etc."xdg/autostart/cinnamon-custom-keybindings.desktop".text = ''
+    [Desktop Entry]
+    Type=Application
+    Name=Cinnamon Custom Keybindings
+    Exec=${keybindings-script}
+    OnlyShowIn=X-Cinnamon;
+    StartupNotify=false
+    X-GNOME-Autostart-Phase=Initialization
+  '';
+
+  environment.etc."xdg/autostart/copyq.desktop".text = ''
+    [Desktop Entry]
+    Type=Application
+    Name=CopyQ Clipboard Manager
+    Exec=copyq --start-server
+    OnlyShowIn=X-Cinnamon;
+    StartupNotify=false
+    X-GNOME-Autostart-Phase=Applications
+  '';
 
   environment.sessionVariables.GTK_IM_MODULE = "xim";
 

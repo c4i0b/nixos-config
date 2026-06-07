@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1779977391,
-        "narHash": "sha256-rcDfWcLxFQbS/bpSMu261mnyxxbccRN2HYFiJLG0b2Q=",
+        "lastModified": 1780790250,
+        "narHash": "sha256-c488/iCqt8tHy8LizNOql2ahbyizVZ3uqlUEtUi1ijc=",
         "owner": "ciscosweater",
         "repo": "enter-the-wired",
-        "rev": "9208c084e98cc5e900354a0be814647f1d5c4bec",
+        "rev": "c0d2ef2f133787c0da3754d4371955c967e55fb9",
         "type": "github"
       },
       "original": {
