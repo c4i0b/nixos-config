@@ -5,8 +5,7 @@
   additions = final: _prev:
     (import ../pkgs final.pkgs)
     // {
-      # Import upstream default.nix with our pkgs (so appimage-run
-      # includes zstd via the modifications overlay below).
+      # Import upstream default.nix with our pkgs.
       accela = (import "${inputs.enter-the-wired}/default.nix") { pkgs = final; };
 
       # SLSsteam - Steamclient Modification for Linux (LD_AUDIT injection)
@@ -17,11 +16,12 @@
   # You can change versions, add patches, set compilation flags, anything really.
   # https://nixos.wiki/wiki/Overlays
   modifications = final: prev: {
-    # Provide libzstd.so.1 inside the FHS env so PyQt6-based
-    # AppImages (e.g. ACCELA) can resolve it at runtime.
-    appimage-run = prev.appimage-run.override {
-      extraPkgs = pkgs: with pkgs; [ xcb-util-cursor zstd icu ];
-    };
+    # If ACCELA fails with missing libs, check its logs
+    # (~/.local/share/ACCELA/logs/) or run via terminal to see the error,
+    # then add the missing package here:
+    #   appimage-run = prev.appimage-run.override {
+    #     extraPkgs = pkgs: with pkgs; [ xcb-util-cursor zstd icu ];
+    #   };
 
     # Pop Shell: track master_noble branch via flake input
     gnomeExtensions =
