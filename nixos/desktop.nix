@@ -43,6 +43,8 @@
   fonts.packages = with pkgs; [
     nerd-fonts.caskaydia-cove
     cascadia-code
+    source-sans
+    inter
   ];
 
   environment.systemPackages = with pkgs; [
