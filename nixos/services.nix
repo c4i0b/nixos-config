@@ -12,6 +12,33 @@
     '';
   };
 
+  systemd.user.services.rclone-bisync = {
+    description = "rclone bisync OneDrive:Sync ↔ ~/Documents/Rclone";
+    serviceConfig = {
+      Type = "oneshot";
+      Nice = 19;
+      IOSchedulingClass = "idle";
+    };
+    script = ''
+      ${pkgs.rclone}/bin/rclone bisync \
+        OneDrive:Sync "$HOME/Documents/Rclone" \
+        --create-empty-src-dirs \
+        --compare size,modtime,checksum \
+        --verbose \
+        --log-file "$HOME/.local/share/rclone/bisync.log"
+    '';
+  };
+
+  systemd.user.timers.rclone-bisync = {
+    description = "Daily rclone bisync";
+    wantedBy = ["timers.target"];
+    timerConfig = {
+      OnCalendar = "daily";
+      Persistent = true;
+      RandomizedDelaySec = "1h";
+    };
+  };
+
   systemd.user.timers.topgrade = {
     description = "Daily topgrade";
     wantedBy = ["timers.target"];
