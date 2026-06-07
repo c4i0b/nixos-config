@@ -14,6 +14,4 @@
     kdePackages.kmahjongg
     kdePackages.kpat
   ];
-
-  programs.ssh.askPassword = lib.mkForce "${pkgs.kdePackages.ksshaskpass.out}/bin/ksshaskpass";
 }

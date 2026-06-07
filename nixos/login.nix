@@ -8,7 +8,7 @@
       };
     };
 
-    defaultSession = "cinnamon";
+    defaultSession = "plasma";
     autoLogin = {
       enable = true;
       user = "caio";
