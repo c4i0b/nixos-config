@@ -1,13 +1,16 @@
 { pkgs, ... }:
 let
   keybindings-script = pkgs.writeShellScript "cinnamon-custom-keybindings" ''
-    dconf write /org/cinnamon/desktop/keybindings/custom-list "['custom0', 'custom1']"
+    dconf write /org/cinnamon/desktop/keybindings/custom-list "['custom0', 'custom1', 'custom2']"
     dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom0/name "'Flameshot screenshot'"
     dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom0/binding "['<Super><Shift>s']"
     dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom0/command "'flameshot gui'"
     dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom1/name "'CopyQ clipboard'"
     dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom1/binding "['<Super>v']"
-    dconf write /org/cinnamon/desktop/keybindings/custom1/command "'copyq show'"
+    dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom1/command "'copyq show'"
+    dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom2/name "'Window screenshot'"
+    dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom2/binding "['<Super><Shift>w']"
+    dconf write /org/cinnamon/desktop/keybindings/custom-keybindings/custom2/command "'gnome-screenshot -w -c'"
   '';
 in {
   services.xserver.desktopManager.cinnamon.enable = true;
