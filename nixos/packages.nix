@@ -83,7 +83,10 @@
     zapzap
 
     # Media players
-    smplayer
+    mpc-qt
+
+    # Subtitles
+    python3Packages.subliminal
 
     # System utilities
     bleachbit
