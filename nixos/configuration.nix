@@ -6,7 +6,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   # You can import other NixOS modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/nixos):
@@ -123,13 +124,17 @@
       LC_TELEPHONE = "en_US.UTF-8";
       LC_TIME = "en_US.UTF-8";
     };
+
+    inputMethod = {
+      enabled = "ibus";
+      ibus.engines = [ ];
+      ibus.waylandFrontend = true;
+    };
   };
+
 
   environment.sessionVariables = {
     XCOMPOSEFILE = "/etc/XCompose";
-    GTK_IM_MODULE = "xim";
-    QT_IM_MODULE = "xim";
-    XMODIFIERS = "@im=xim";
   };
 
   environment.etc."XCompose".text = ''
