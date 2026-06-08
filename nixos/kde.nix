@@ -20,4 +20,11 @@
   environment.etc."xdg/kwinrc".text = lib.generators.toINI { } {
     Wayland.InputMethod = "${pkgs.qt6Packages.fcitx5-with-addons.override { addons = []; }}/share/applications/org.fcitx.Fcitx5.desktop";
   };
+
+  # Enable OCR text extraction in Spectacle (screenshots)
+  environment.systemPackages = [
+    (pkgs.kdePackages.spectacle.override {
+      tesseractLanguages = [ "eng" "por" ];
+    })
+  ];
 }
