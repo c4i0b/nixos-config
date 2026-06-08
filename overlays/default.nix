@@ -6,7 +6,7 @@
     (import ../pkgs final.pkgs)
     // {
       # Import upstream default.nix with our pkgs.
-      accela = (import "${inputs.enter-the-wired}/default.nix") { pkgs = final; };
+      accela = final.callPackage "${inputs.enter-the-wired}/default.nix" { };
 
       # SLSsteam - Steamclient Modification for Linux (LD_AUDIT injection)
       sls-steam = inputs.sls-steam.packages.${final.stdenv.hostPlatform.system}.sls-steam;

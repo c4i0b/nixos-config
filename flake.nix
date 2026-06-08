@@ -21,7 +21,7 @@
 
     # ACCELA + SLSsteam
     enter-the-wired = {
-      url = "github:c4i0b/enter-the-wired/c0d2ef2f133787c0da3754d4371955c967e55fb9";
+      url = "github:c4i0b/enter-the-wired/562f40c12e7963fb96cca44c85267791dc7592bd";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
