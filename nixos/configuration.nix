@@ -126,9 +126,16 @@
     };
 
     inputMethod = {
-      enabled = "ibus";
-      ibus.engines = [ ];
-      ibus.waylandFrontend = true;
+      enable = true;
+      type = "fcitx5";
+      fcitx5.addons = [ ];
+      fcitx5.waylandFrontend = true;
+      fcitx5.settings.globalOptions = {
+        "Behavior/DisabledAddons" = {
+          "0" = "notificationitem";
+          "1" = "classicui";
+        };
+      };
     };
   };
 

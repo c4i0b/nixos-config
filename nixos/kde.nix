@@ -18,6 +18,6 @@
   ];
 
   environment.etc."xdg/kwinrc".text = lib.generators.toINI { } {
-    Wayland.InputMethod = "${pkgs.ibus-with-plugins.override { plugins = []; }}/share/applications/org.freedesktop.IBus.Panel.Wayland.Gtk3.desktop";
+    Wayland.InputMethod = "${pkgs.qt6Packages.fcitx5-with-addons.override { addons = []; }}/share/applications/org.fcitx.Fcitx5.desktop";
   };
 }
