@@ -30,9 +30,15 @@
       ];
     };
 
-    # flatpak.enable = true;
     fwupd.enable = true;
     upower.enable = true;
+  };
+
+  # flatpak.enable = true;
+
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
   };
 
   hardware = {

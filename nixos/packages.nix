@@ -70,12 +70,12 @@
 
     # Desktop
     file-roller
+    gearlever
     gnome-boxes
     onlyoffice-desktopeditors
     qbittorrent
     rclone
     remmina
-    unstablePkgs.github-desktop
     unstablePkgs.pear-desktop
     unstablePkgs.vesktop
 

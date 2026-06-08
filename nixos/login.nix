@@ -5,6 +5,7 @@
       enable = true;
       settings = {
         animation = "matrix";
+        session_log = null;
       };
     };
 
