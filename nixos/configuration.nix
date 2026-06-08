@@ -127,6 +127,9 @@
 
   environment.sessionVariables = {
     XCOMPOSEFILE = "/etc/XCompose";
+    GTK_IM_MODULE = "xim";
+    QT_IM_MODULE = "xim";
+    XMODIFIERS = "@im=xim";
   };
 
   environment.etc."XCompose".text = ''
