@@ -42,7 +42,7 @@
     nix-index
     nix-search
     nixfmt
-    opencode
+    unstablePkgs.opencode
     superfile
     television
     tmux
