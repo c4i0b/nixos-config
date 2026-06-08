@@ -21,13 +21,13 @@
 
     # ACCELA + SLSsteam
     enter-the-wired = {
-      url = "github:ciscosweater/enter-the-wired";
+      url = "github:c4i0b/enter-the-wired/c0d2ef2f133787c0da3754d4371955c967e55fb9";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     # SLSsteam - Steamclient Modification for Linux
     sls-steam = {
-      url = "github:AceSLS/SLSsteam";
+      url = "github:AceSLS/SLSsteam/8fd895a222afaf500400cf2a07383b249ebd15e4";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 

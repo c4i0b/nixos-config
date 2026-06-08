@@ -9,14 +9,15 @@
       "locked": {
         "lastModified": 1780790250,
         "narHash": "sha256-c488/iCqt8tHy8LizNOql2ahbyizVZ3uqlUEtUi1ijc=",
-        "owner": "ciscosweater",
+        "owner": "c4i0b",
         "repo": "enter-the-wired",
         "rev": "c0d2ef2f133787c0da3754d4371955c967e55fb9",
         "type": "github"
       },
       "original": {
-        "owner": "ciscosweater",
+        "owner": "c4i0b",
         "repo": "enter-the-wired",
+        "rev": "c0d2ef2f133787c0da3754d4371955c967e55fb9",
         "type": "github"
       }
     },
@@ -139,6 +140,7 @@
       "original": {
         "owner": "AceSLS",
         "repo": "SLSsteam",
+        "rev": "8fd895a222afaf500400cf2a07383b249ebd15e4",
         "type": "github"
       }
     }
