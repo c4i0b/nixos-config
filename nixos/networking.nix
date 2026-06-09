@@ -16,6 +16,6 @@
     authKeyFile = "/var/lib/tailscale/auth.key";
   };
 
-  environment.systemPackages = [pkgs.localsend];
+  programs.localsend.enable = true;
 
 }
