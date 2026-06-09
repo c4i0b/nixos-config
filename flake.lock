@@ -7,17 +7,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1780959349,
+        "lastModified": 1780968660,
         "narHash": "sha256-qSVYS8oWlOR6pjNMUqC2Av0XC2R4AZVT3Khj3KS/dKs=",
-        "owner": "c4i0b",
+        "owner": "ciscosweater",
         "repo": "enter-the-wired",
-        "rev": "562f40c12e7963fb96cca44c85267791dc7592bd",
+        "rev": "d64bb7c3acfb74a65ebae2bba46ca565f17d4945",
         "type": "github"
       },
       "original": {
-        "owner": "c4i0b",
+        "owner": "ciscosweater",
         "repo": "enter-the-wired",
-        "rev": "562f40c12e7963fb96cca44c85267791dc7592bd",
+        "rev": "d64bb7c3acfb74a65ebae2bba46ca565f17d4945",
         "type": "github"
       }
     },
