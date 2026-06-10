@@ -68,6 +68,7 @@
         Locked = true;
       };
       SearchSuggestEnabled = false;
+      TranslateEnabled = true;
       SSLVersionMin = "tls1.2";
       UserMessaging = {
         ExtensionRecommendations = false;
