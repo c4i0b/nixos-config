@@ -22,7 +22,7 @@
     ./boot.nix
     ./networking.nix
     ./users.nix
-    ./desktop.nix
+    ./power.nix
     ./audio.nix
     ./theming.nix
     ./hardware.nix
@@ -129,20 +129,7 @@
       LC_TIME = "en_US.UTF-8";
     };
 
-    inputMethod = {
-      enable = true;
-      type = "fcitx5";
-      fcitx5.addons = [ ];
-      fcitx5.waylandFrontend = true;
-      fcitx5.settings.globalOptions = {
-        "Behavior/DisabledAddons" = {
-          "0" = "notificationitem";
-          "1" = "classicui";
-        };
-      };
-    };
   };
-
 
   environment.sessionVariables = {
     XCOMPOSEFILE = "/etc/XCompose";
@@ -155,11 +142,6 @@
   '';
 
   console.keyMap = "us-acentos";
-
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "intl";
-  };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "26.05";

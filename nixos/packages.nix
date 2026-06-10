@@ -1,6 +1,11 @@
 # System-wide packages: add new entries to environment.systemPackages.
 { pkgs, ... }:
 {
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
+  };
+
   environment.systemPackages = with pkgs; [
 
     # Development

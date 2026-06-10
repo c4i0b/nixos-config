@@ -56,9 +56,4 @@
       PasswordAuthentication = false;
     };
   };
-
-  programs.appimage = {
-    enable = true;
-    binfmt = true;
-  };
 }
