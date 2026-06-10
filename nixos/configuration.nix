@@ -97,16 +97,26 @@
 
   system.autoUpgrade = {
     enable = true;
-    flake = "github:c4i0b/nixos-config";
+    flake = "/etc/nixos";
+    flags = [ "--commit-lock-file" ];
     randomizedDelaySec = "1h";
     dates = "daily";
+    upgrade = false;
   };
 
-  systemd.services.nixos-upgrade.serviceConfig = {
-    Restart = "on-failure";
-    RestartSec = "2h";
-    Nice = 19;
-    IOSchedulingClass = "idle";
+  systemd.services.nixos-upgrade = {
+    serviceConfig = {
+      Restart = "on-failure";
+      RestartSec = "2h";
+      Nice = 19;
+      IOSchedulingClass = "idle";
+    };
+    environment = {
+      GIT_AUTHOR_NAME = "NixOS Auto-upgrade";
+      GIT_AUTHOR_EMAIL = "root@nixos";
+      GIT_COMMITTER_NAME = "NixOS Auto-upgrade";
+      GIT_COMMITTER_EMAIL = "root@nixos";
+    };
   };
 
   time.timeZone = "America/Sao_Paulo";
