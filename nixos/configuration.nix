@@ -23,6 +23,9 @@
     ./networking.nix
     ./users.nix
     ./desktop.nix
+    ./audio.nix
+    ./theming.nix
+    ./hardware.nix
     ./kde.nix
     # ./cinnamon.nix
     # ./gnome.nix
