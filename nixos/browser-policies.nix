@@ -56,6 +56,11 @@
       HttpsOnlyMode.Enabled = true;
       HttpsOnlyMode.Locked = true;
       NetworkPrediction = false;
+      Permissions = {
+        Camera.BlockNewRequests = true;
+        Microphone.BlockNewRequests = true;
+        Location.BlockNewRequests = true;
+      };
       Preferences."general.autoScroll".Value = true;
       SanitizeOnShutdown = {
         Cache = true;
