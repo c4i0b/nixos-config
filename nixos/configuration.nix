@@ -17,13 +17,9 @@
     # inputs.hardware.nixosModules.common-cpu-amd
     # inputs.hardware.nixosModules.common-ssd
 
-    # Import your generated (nixos-generate-config) hardware configuration
-    ./hardware-configuration.nix
-
     # Split configuration modules
     ./login.nix
     ./boot.nix
-    ./gpu.nix
     ./networking.nix
     ./users.nix
     ./desktop.nix
@@ -41,11 +37,6 @@
     ./packages.nix
     ./browser-policies.nix
   ];
-
-  fileSystems."/mnt/KingFast_EXT4" = {
-    device = "/dev/disk/by-uuid/fcffc74c-886d-41f1-bf7c-af282f82b14c";
-    fsType = "ext4";
-  };
 
   nixpkgs = {
     # You can add overlays here
