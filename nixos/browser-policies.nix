@@ -32,12 +32,11 @@
       };
       EnableTrackingProtection = {
         Value = true;
-        Locked = true;
+        Locked = false;
         Cryptomining = true;
         Fingerprinting = true;
         EmailTracking = true;
         SuspectedFingerprinting = true;
-        Category = "strict";
       };
       Extensions = {
         Install = [
