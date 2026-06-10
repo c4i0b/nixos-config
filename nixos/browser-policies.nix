@@ -19,7 +19,6 @@
       };
       CaptivePortal = false;
       Cookies.AcceptThirdParty = "never";
-      Cookies.Locked = true;
       DisableFirefoxStudies = true;
       DisablePocket = true;
       DisableTelemetry = true;
