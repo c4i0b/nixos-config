@@ -45,12 +45,12 @@ in {
         "org/cinnamon/desktop/interface" = {
           font-name = "CaskaydiaCove Nerd Font 11";
           gtk-theme = "adw-gtk3-dark";
-          icon-theme = "Numix-Circle";
+          icon-theme = "Qogir";
         };
 
         "org/gnome/desktop/interface" = {
           gtk-theme = "adw-gtk3-dark";
-          icon-theme = "Numix-Circle";
+          icon-theme = "Qogir";
           color-scheme = "prefer-dark";
         };
 

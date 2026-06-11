@@ -94,7 +94,7 @@ in {
           color-scheme='prefer-dark'
           accent-color='teal'
           font-name='CaskaydiaCove Nerd Font 11'
-          icon-theme='Numix-Circle'
+          icon-theme='Qogir'
 
           [org/gnome/desktop/background]
           picture-uri=""

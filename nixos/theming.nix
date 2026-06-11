@@ -10,7 +10,7 @@
 
   environment.systemPackages = with pkgs; [
     adw-gtk3
-    numix-icon-theme-circle
+    qogir-icon-theme
   ];
 
   environment.etc."xdg/gtk-3.0/settings.ini".text = ''
