@@ -32,6 +32,7 @@
       EnableTrackingProtection = {
         Value = true;
         Locked = false;
+        Category = "strict";
         Cryptomining = true;
         Fingerprinting = true;
         EmailTracking = true;
