@@ -20,6 +20,9 @@ jobs:
         with:
           token: ${{ secrets.GH_TOKEN_FOR_UPDATES }}
           pr-title: "chore: update flake.lock"
+          pr-body: |
+            Automated flake dependency update.
+            {{env.GIT_COMMIT_MESSAGE}}
           pr-labels: |
             dependencies
             automated
