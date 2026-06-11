@@ -9,9 +9,9 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
-    # Home manager
-    home-manager.url = "github:nix-community/home-manager/release-26.05";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    # Home manager (unused — dotfiles managed via GNU stow)
+    # home-manager.url = "github:nix-community/home-manager/release-26.05";
+    # home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # Hardware quirks
     nixos-hardware = {
@@ -42,7 +42,6 @@
     self,
     nixpkgs,
     nixpkgs-unstable,
-    home-manager,
     nixos-hardware,
     enter-the-wired,
     sls-steam,
