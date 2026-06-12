@@ -41,7 +41,7 @@
       Extensions = {
         Install = [
           "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi"
-          "https://addons.mozilla.org/firefox/downloads/latest/ultimadark/latest.xpi"
+          "https://addons.mozilla.org/firefox/downloads/latest/darkreader/latest.xpi"
           "https://addons.mozilla.org/firefox/downloads/latest/uaswitcher/latest.xpi"
           "https://addons.mozilla.org/firefox/downloads/latest/sponsorblock/latest.xpi"
         ];
