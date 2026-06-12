@@ -17,6 +17,16 @@
     kdePackages.kpat
   ];
 
+  environment.etc."xdg/kdeglobals".text = lib.generators.toINI { } {
+    General.ColorScheme = "QogirDark";
+    Icons.Theme = "Qogir";
+    KDE.LookAndFeelPackage = "com.github.vinceliuice.ChromeOS-dark";
+  };
+
+  environment.etc."xdg/plasma-org.kde.plasma.desktop-appletsrc".text = lib.generators.toINI { } {
+    "org.kde.plasma.desktop".WidgetStyle = "org.kde.breeze.dark";
+  };
+
   environment.etc."xdg/kwinrc".text = lib.generators.toINI { } {
     Wayland.InputMethod = "${pkgs.qt6Packages.fcitx5-with-addons.override { addons = []; }}/share/applications/org.fcitx.Fcitx5.desktop";
   };
