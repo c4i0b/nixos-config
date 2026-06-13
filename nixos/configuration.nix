@@ -95,7 +95,6 @@
     flags = [ "--commit-lock-file" ];
     randomizedDelaySec = "1h";
     dates = "daily";
-    upgrade = false;
   };
 
   systemd.services.nixos-upgrade = {
