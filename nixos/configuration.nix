@@ -97,7 +97,25 @@
     dates = "daily";
   };
 
+  systemd.services.flake-update = {
+    description = "Update flake inputs";
+    before = [ "nixos-upgrade.service" ];
+    wants = [ "network-online.target" ];
+    after = [ "network-online.target" ];
+    unitConfig.StartLimitIntervalSec = 300;
+    serviceConfig = {
+      Type = "oneshot";
+      User = "caio";
+      ExecStart = "${pkgs.nix}/bin/nix flake update --flake /etc/nixos --commit-lock-file";
+      Restart = "on-failure";
+      RestartSec = "30";
+    };
+    path = with pkgs; [ nix git ];
+  };
+
   systemd.services.nixos-upgrade = {
+    after = [ "flake-update.service" ];
+    requires = [ "flake-update.service" ];
     serviceConfig = {
       Restart = "on-failure";
       RestartSec = "2h";
