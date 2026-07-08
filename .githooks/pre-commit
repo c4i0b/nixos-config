@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+allowed_ext=".nix .md"
+allowed_names=".gitignore"
+allowed_prefix=".githooks/"
+
+staged=$(git diff --cached --name-only --diff-filter=ACM)
+
+if [ -z "$staged" ]; then
+    exit 0
+fi
+
+blocked=""
+for file in $staged; do
+    basename=$(basename "$file")
+    ext="${file##*.}"
+
+    match=false
+    for a in $allowed_ext; do
+        if [ ".$ext" = "$a" ]; then
+            match=true
+            break
+        fi
+    done
+
+    if ! $match; then
+        case "$file" in
+            .githooks/*) match=true ;;
+        esac
+    fi
+
+    if ! $match; then
+        for a in $allowed_names; do
+            if [ "$basename" = "$a" ]; then
+                match=true
+                break
+            fi
+        done
+    fi
+
+    if ! $match; then
+        blocked="$blocked  $file\n"
+    fi
+done
+
+if [ -n "$blocked" ]; then
+    echo -e "\n[pre-commit] Bloqueado: apenas arquivos .nix e .md sao permitidos neste projeto."
+    echo -e "\nArquivos rejeitados:\n"
+    echo -e "$blocked"
+    echo "Para forcar o commit: git commit --no-verify"
+    exit 1
+fi
+
+exit 0

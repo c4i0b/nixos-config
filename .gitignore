@@ -1,3 +1,34 @@
+# Nix build artifacts
 result
-nixos-efi-vars.fd
-configuration.nix.bak
+result-*
+
+# Backup files
+*.bak
+*.backup
+
+# Editor swap/temp files
+*.swp
+*.swo
+*.swn
+*~
+
+# Environment / direnv
+.env
+.envrc
+.direnv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE/Editor config
+.vscode/
+.idea/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# UEFI firmware dumps
+*.fd
+*efi-vars*
