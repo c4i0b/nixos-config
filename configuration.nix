@@ -1,0 +1,331 @@
+{ config, pkgs, ... }:
+
+let
+  # Unstable channel — prefix with unstable. in systemPackages
+  unstable = import <nixos-unstable/nixpkgs> { config = { allowUnfree = true; }; };
+in
+
+{
+  imports = [
+    ./hardware-configuration.nix
+  ];
+
+  # ============================================================================
+  # 1. Boot & Kernel
+  # ============================================================================
+  boot.loader.timeout = -1;
+  boot.loader.limine.enable = true;
+  boot.loader.limine.extraConfig = ''
+    quiet: yes
+  '';
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  boot.plymouth.enable = true;
+  boot.plymouth.theme = "spin";
+  boot.plymouth.themePackages = with pkgs; [
+    (adi1090x-plymouth-themes.override { selected_themes = [ "spin" ]; })
+  ];
+
+  boot.consoleLogLevel = 3;
+  boot.initrd.verbose = false;
+  boot.initrd.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_drm" ];
+  boot.kernelParams = [ "quiet" "rd.udev.log_level=3" "rd.systemd.show_status=auto" ];
+
+  # ============================================================================
+  # 2. Networking
+  # ============================================================================
+  networking.hostName = "nixos";
+  networking.networkmanager.enable = true;
+  # networking.wireless.enable = true;
+  # networking.proxy.default = "http://user:password@proxy:port/";
+  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+
+  # ============================================================================
+  # 3. Localization
+  # ============================================================================
+  time.timeZone = "America/Sao_Paulo";
+
+  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "en_US.UTF-8";
+    LC_IDENTIFICATION = "en_US.UTF-8";
+    LC_MEASUREMENT = "en_US.UTF-8";
+    LC_MONETARY = "en_US.UTF-8";
+    LC_NAME = "en_US.UTF-8";
+    LC_NUMERIC = "en_US.UTF-8";
+    LC_PAPER = "en_US.UTF-8";
+    LC_TELEPHONE = "en_US.UTF-8";
+    LC_TIME = "en_US.UTF-8";
+  };
+
+  services.xserver.xkb = {
+    layout = "us";
+    variant = "alt-intl";
+  };
+
+  console.keyMap = "dvorak";
+
+  i18n.inputMethod = {
+    enable = true;
+    type = "ibus";
+    ibus.engines = with pkgs.ibus-engines; [ ];
+    ibus.waylandFrontend = true;
+  };
+
+  # Cedilla fix
+  environment.etc."X11/XCompose".text = ''
+    include "%L"
+
+    <dead_acute> <c> : "ç" U00E7
+    <dead_acute> <C> : "Ç" U00C7
+  '';
+
+  environment.sessionVariables = {
+    XCOMPOSEFILE = "/etc/X11/XCompose";
+  };
+
+  # ============================================================================
+  # 4. Display & Desktop
+  # ============================================================================
+  services.xserver.enable = true;
+  services.displayManager.sddm.enable = true;
+  services.desktopManager.plasma6.enable = true;
+
+  # Exclude xterm
+  services.xserver.excludePackages = [ pkgs.xterm ];
+
+  # Minimal KDE
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    plasma-browser-integration
+    elisa
+    gwenview
+    okular
+    kate
+    khelpcenter
+    kwalletmanager
+    filelight
+    krdc
+    krfb
+    spectacle
+  ];
+  # services.xserver.libinput.enable = true;
+
+  # ============================================================================
+  # 5. Hardware
+  # ============================================================================
+
+  # -- NVIDIA --
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+
+  hardware.nvidia = {
+    modesetting.enable = true;
+    powerManagement.enable = true;
+    nvidiaSettings = true;
+    open = true;
+    branch = "latest";
+  };
+  services.xserver.videoDrivers = [ "nvidia" ];
+
+  # -- Storage --
+  fileSystems."/mnt/KingFast_EXT4" = {
+    device = "/dev/disk/by-label/KingFast_EXT4";
+    fsType = "ext4";
+  };
+
+  # -- Btrfs --
+  services.btrfs.autoScrub.enable = true;
+
+  # -- Bluetooth --
+  hardware.bluetooth.enable = true;
+  services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="0bda", ATTR{idProduct}=="a728", ATTR{power/control}="on"
+  '';
+
+  # ============================================================================
+  # 6. Users
+  # ============================================================================
+  users.users."caio" = {
+    isNormalUser = true;
+    description = "Caio";
+    shell = pkgs.fish;
+    extraGroups = [ "networkmanager" "wheel" "vboxusers" "podman" ];
+    subUidRanges = [{ startUid = 65536; count = 65536; }];
+    subGidRanges = [{ startGid = 65536; count = 65536; }];
+    packages = with pkgs; [
+      kdePackages.kate
+    ];
+  };
+
+  # ============================================================================
+  # 7. Security & Package Overrides
+  # ============================================================================
+  nixpkgs.config.allowUnfree = true;
+
+  # ============================================================================
+  # 8. Services
+  # ============================================================================
+
+  # -- Printing --
+  # services.printing.enable = true;
+
+  # -- PipeWire --
+  services.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
+
+  # -- Flatpak --
+  services.flatpak.enable = true;
+  system.activationScripts.flathub = ''
+    ${pkgs.flatpak}/bin/flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+  '';
+
+  # -- Btrfs snapshots --
+  services.btrbk.instances."home" = {
+    onCalendar = "hourly";
+    settings = {
+      snapshot_preserve_min = "1w";
+      snapshot_preserve = "2w";
+      volume."/" = {
+        snapshot_dir = "/snapshots";
+        subvolume = "home";
+      };
+    };
+  };
+
+  # -- VirtualBox --
+  virtualisation.virtualbox.host.enable = true;
+
+  # ============================================================================
+  # 9. Programs (enabled via NixOS modules)
+  # ============================================================================
+  programs.fish.enable = true;
+  programs.steam.enable = true;
+  programs.gamemode.enable = true;
+
+  # ============================================================================
+  # 10. Virtualization
+  # ============================================================================
+  virtualisation.containers.enable = true;
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+    defaultNetwork.settings.dns_enabled = true;
+  };
+
+  # ============================================================================
+  # 11. Systemd
+  # ============================================================================
+
+  systemd.tmpfiles.rules = [
+    "d /snapshots 0755 root root"
+  ];
+
+  # -- User services (topgrade) --
+  systemd.user.services.topgrade-user = {
+    description = "Topgrade - user updates";
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.topgrade}/bin/topgrade --disable system --disable firmware --yes --no-ask-retry --auto-retry 3";
+      Nice = 19;
+      IOSchedulingClass = "idle";
+      CPUSchedulingPolicy = "idle";
+      TimeoutStartSec = "2h";
+    };
+  };
+
+  systemd.user.timers.topgrade-user = {
+    description = "Topgrade - user updates timer";
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnCalendar = "daily";
+      RandomizedDelaySec = "30min";
+      Persistent = true;
+    };
+  };
+
+  # ============================================================================
+  # 12. System Packages (organized by category)
+  #    Prefix with unstable. for packages from nixos-unstable
+  # ============================================================================
+  environment.systemPackages = with pkgs; [
+
+    # --- Development ---
+    unstable.gh
+    unstable.git
+    unstable.opencode
+    unstable.python3
+
+    # --- CLI / System Tools ---
+    unstable.btop
+    unstable.fastfetch
+    unstable.gdu
+    unstable.jq
+    unstable.libnotify
+    unstable.tealdeer
+    unstable.topgrade
+    unstable.nix-search
+    unstable.unzip
+
+    # --- Containers ---
+    unstable.distrobox
+    unstable.podman-compose
+
+    # --- Spelling / Dictionaries ---
+    aspell
+    aspellDicts.en
+    aspellDicts.en-computers
+    aspellDicts.en-science
+    aspellDicts.pt_BR
+
+    # --- GUI Apps ---
+    (kdePackages.spectacle.override {
+      tesseractLanguages = [ "eng" "por" ];
+    })
+    unstable.gnome-disk-utility
+    unstable.snapper
+    unstable.btrfs-assistant
+
+    # --- Gaming ---
+    unstable.ludusavi
+    unstable.lutris
+    unstable.mangohud
+    unstable.goverlay
+    unstable.wine
+    unstable.winetricks
+
+    # --- Network ---
+
+    # --- Multimedia ---
+    unstable.pear-desktop
+
+  ];
+
+  # ============================================================================
+  # 13. System State & Maintenance
+  # ============================================================================
+  system.stateVersion = "26.05";
+
+  system.autoUpgrade = {
+    enable = true;
+    dates = "02:00";
+    randomizedDelaySec = "45min";
+    allowReboot = false;
+  };
+
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
+  };
+
+  nix.optimise.automatic = true;
+}
