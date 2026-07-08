@@ -2,25 +2,17 @@
 
 This NixOS config uses:
 - `hardware.nvidia.open = true` – open-source kernel module (nvidia-open)
-- `hardware.nvidia.branch = "latest"` – tracks newest driver branch (production or new feature)
+- `hardware.nvidia.modesetting.enable = true` – DRM KMS modesetting (required for Wayland)
+- `hardware.nvidia.powerManagement.enable = true` – GPU power-down when unused
+- `hardware.nvidia.nvidiaSettings = true` – NVIDIA control panel GUI (`nvidia-settings`)
 - `hardware.graphics.enable32Bit = true` – required for Steam/Wine/Proton
+- `boot.kernelPackages = unstable.linuxPackages_latest` – kernel + NVIDIA drivers from unstable channel (610.43.02)
 - `programs.steam.enable = true` – enables Steam + extra Steam-related packages
 - `programs.gamemode.enable = true` – enables the gamemode daemon
 - Lutris, Wine, Winetricks, GOverlay, MangoHud installed as system packages
 
 ## External resources
 
-- NixOS NVIDIA wiki: https://nixos.wiki/wiki/Nvidia
-- NixOS Steam wiki: https://nixos.wiki/wiki/Steam
-- NixOS Gaming page: https://nixos.wiki/wiki/Gaming
-- Lutris on NixOS: https://nixos.wiki/wiki/Lutris
-- MangoHud docs: https://github.com/flightlessmango/MangoHud
-- Gamemode docs: https://github.com/FeralInteractive/gamemode
-
-## Notes
-
-- `nvidiaSettings = true` adds the NVIDIA control panel GUI (`nvidia-settings`)
-- `powerManagement.enable` allows the GPU to be powered down when unused
-- `modesetting.enable` enables the DRM KMS modesetting driver
-- Flatpak complements Steam (Flathub has many games & launchers)
-- If `nvidia-open` has issues on your GPU, set `open = false` to use proprietary modules
+- NixOS NVIDIA wiki: https://wiki.nixos.org/wiki/Nvidia
+- NixOS Steam wiki: https://wiki.nixos.org/wiki/Steam
+- NixOS Gaming page: https://wiki.nixos.org/wiki/Gaming

@@ -35,21 +35,21 @@ sudo nixos-rebuild switch
 ## NixOS Wiki
 - https://wiki.nixos.org/
 
-## Cheat Sheet (unstable packages via channels)
+## Unstable packages (via channels)
 ```bash
-# Add unstable channel (as root)
 sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
 sudo nix-channel --update
+```
 
-# Use in configuration.nix:
-# { config, pkgs, ... }:
-# let
-#   unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
-# in {
-#   environment.systemPackages = with pkgs; [
-#     # stable packages
-#   ] ++ (with unstable; [
-#     # unstable packages
-#   ]);
-# }
+Prefix with `unstable.` inside `environment.systemPackages` — no `++` needed:
+```nix
+{ config, pkgs, ... }:
+let
+  unstable = import <nixos-unstable/nixpkgs> { config = { allowUnfree = true; }; };
+in {
+  environment.systemPackages = with pkgs; [
+    stable-package
+    unstable.unstable-package
+  ];
+}
 ```

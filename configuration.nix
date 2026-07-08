@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  # Unstable channel — prefix with unstable. in systemPackages
+  # Unstable channel
   unstable = import <nixos-unstable/nixpkgs> { config = { allowUnfree = true; }; };
 in
 
@@ -19,7 +19,7 @@ in
     quiet: yes
   '';
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = unstable.linuxPackages_latest;
 
   boot.plymouth.enable = true;
   boot.plymouth.theme = "spin";
@@ -29,7 +29,6 @@ in
 
   boot.consoleLogLevel = 3;
   boot.initrd.verbose = false;
-  boot.initrd.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_drm" ];
   boot.kernelParams = [ "quiet" "rd.udev.log_level=3" "rd.systemd.show_status=auto" ];
 
   # ============================================================================
@@ -126,7 +125,6 @@ in
     powerManagement.enable = true;
     nvidiaSettings = true;
     open = true;
-    branch = "latest";
   };
   services.xserver.videoDrivers = [ "nvidia" ];
 
@@ -254,31 +252,9 @@ in
 
   # ============================================================================
   # 12. System Packages (organized by category)
-  #    Prefix with unstable. for packages from nixos-unstable
+  #    Stable packages in main list, unstable packages in ++ block
   # ============================================================================
   environment.systemPackages = with pkgs; [
-
-    # --- Development ---
-    unstable.gh
-    unstable.git
-    unstable.opencode
-    unstable.python3
-
-    # --- CLI / System Tools ---
-    unstable.btop
-    unstable.fastfetch
-    unstable.gdu
-    unstable.jq
-    unstable.libnotify
-    unstable.tealdeer
-    unstable.topgrade
-    unstable.nix-search
-    unstable.unzip
-
-    # --- Containers ---
-    unstable.distrobox
-    unstable.podman-compose
-
     # --- Spelling / Dictionaries ---
     aspell
     aspellDicts.en
@@ -290,24 +266,48 @@ in
     (kdePackages.spectacle.override {
       tesseractLanguages = [ "eng" "por" ];
     })
-    unstable.gnome-disk-utility
-    unstable.snapper
-    unstable.btrfs-assistant
+  ] ++ (with unstable; [
+    # --- Development ---
+    gh
+    git
+    opencode
+    python3
+
+    # --- CLI ---
+    btop
+    fastfetch
+    tealdeer
+    topgrade
+    nix-search
+
+    # --- System Tools ---
+    gdu
+    jq
+    libnotify
+    unzip
+
+    # --- Containers ---
+    distrobox
+    podman-compose
+
+    # --- GUI Apps ---
+    gnome-disk-utility
+    snapper
+    btrfs-assistant
 
     # --- Gaming ---
-    unstable.ludusavi
-    unstable.lutris
-    unstable.mangohud
-    unstable.goverlay
-    unstable.wine
-    unstable.winetricks
+    ludusavi
+    lutris
+    mangohud
+    goverlay
+    wine
+    winetricks
 
     # --- Network ---
 
     # --- Multimedia ---
-    unstable.pear-desktop
-
-  ];
+    pear-desktop
+  ]);
 
   # ============================================================================
   # 13. System State & Maintenance
@@ -323,8 +323,8 @@ in
 
   nix.gc = {
     automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 7d";
+    dates = "daily";
+    options = "--delete-older-than 1d";
   };
 
   nix.optimise.automatic = true;
