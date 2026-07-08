@@ -63,7 +63,7 @@ in
     variant = "alt-intl";
   };
 
-  console.keyMap = "dvorak";
+  console.keyMap = "us";
 
   i18n.inputMethod = {
     enable = true;
@@ -133,6 +133,17 @@ in
   fileSystems."/mnt/KingFast_EXT4" = {
     device = "/dev/disk/by-label/KingFast_EXT4";
     fsType = "ext4";
+  };
+
+  # -- Btrfs compression (zstd) --
+  fileSystems."/".options = [ "compress=zstd" ];
+  fileSystems."/home".options = [ "subvol=home" "compress=zstd" ];
+  fileSystems."/nix".options = [ "subvol=nix" "compress=zstd" ];
+
+  # -- Zram swap --
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd";
   };
 
   # -- Btrfs --
