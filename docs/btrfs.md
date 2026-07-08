@@ -27,7 +27,9 @@ fileSystems."/" = {
 
 Algorithms: `zstd` (best all-round), `lzo` (fast), `zlib` (best ratio, slow).
 
-Apply to existing data: `btrfs filesystem defrag -r -v -czstd /path`
+- New install? Enable compression at mount time → ./fresh-deploy.md
+- Existing data (already-installed system)? → ./btrfs-compress-existing.md
+  (`btrfs filesystem defrag -r -czstd /path` — note: snapshots pin old extents)
 
 ## Auto-scrub (integrity check)
 

@@ -11,6 +11,8 @@ sudo nixos-rebuild switch
 
 > `/etc/nixos` is a symlink to this repo — any change here is picked up by `nixos-rebuild`.
 
+> For a from-scratch install (partition, format, compression from byte 0), see ./fresh-deploy.md.
+
 # NixOS Documentation References
 
 ## Official Manuals

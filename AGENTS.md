@@ -28,7 +28,7 @@ Prefix with `unstable.` inside `environment.systemPackages` for unstable package
 ## Sections (numbered 1–13 in configuration.nix)
 - 1: Boot & Kernel (Limine, Plymouth, latest kernel)
 - 2: Networking
-- 3: Localization (cedilla fix, Dvorak console keymap, ibus)
+- 3: Localization (cedilla fix, US console keymap, ibus)
 - 4: Display & Desktop (SDDM + Plasma 6, minimal KDE packages)
 - 5: Hardware (NVIDIA open modules, Storage, Btrfs scrub, Bluetooth)
 - 6: Users
@@ -59,6 +59,8 @@ Prefix with `unstable.` inside `environment.systemPackages` for unstable package
 - `docs/btrbk.md` — btrbk snapshot setup
 - `docs/bluetooth.md` — Bluetooth configuration notes
 - `docs/btrfs.md` — Btrfs filesystem notes
+- `docs/btrfs-compress-existing.md` — compress existing data (defrag)
+- `docs/fresh-deploy.md` — fresh install with compression from the start
 - `docs/build-vm.md` — building a NixOS VM for testing
 - `docs/distrobox.md` — Distrobox container setup
 - `docs/limine.md` — Limine bootloader notes
