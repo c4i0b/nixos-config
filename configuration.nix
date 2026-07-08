@@ -125,6 +125,7 @@ in
     powerManagement.enable = true;
     nvidiaSettings = true;
     open = true;
+    branch = "latest";
   };
   services.xserver.videoDrivers = [ "nvidia" ];
 
