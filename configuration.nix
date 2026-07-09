@@ -290,6 +290,8 @@ in
     btop
     fastfetch
     lazygit
+    micro
+    superfile
     tealdeer
     topgrade
     nix-search
