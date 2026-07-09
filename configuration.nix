@@ -137,6 +137,11 @@ in
   };
   services.xserver.videoDrivers = [ "nvidia" ];
 
+  boot.extraModprobeConfig = ''
+    # NVIDIA open DRM: KWin crash workaround (KDE bug 520842); remove on Plasma 6.7+
+    options nvidia-drm color_pipeline=0
+  '';
+
   # -- Storage --
   fileSystems."/mnt/KingFast_EXT4" = {
     device = "/dev/disk/by-label/KingFast_EXT4";
