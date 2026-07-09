@@ -67,9 +67,7 @@ in
 
   i18n.inputMethod = {
     enable = true;
-    type = "ibus";
-    ibus.engines = with pkgs.ibus-engines; [ ];
-    ibus.waylandFrontend = true;
+    type = "fcitx5";
   };
 
   # Cedilla fix
