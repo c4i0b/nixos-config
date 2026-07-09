@@ -89,6 +89,9 @@ in
   # ============================================================================
   services.xserver.enable = true;
   services.displayManager.sddm.enable = true;
+  services.displayManager.sddm.wayland.enable = true;
+  services.displayManager.autoLogin.enable = true;
+  services.displayManager.autoLogin.user = "caio";
   services.desktopManager.plasma6.enable = true;
 
   # Exclude xterm
