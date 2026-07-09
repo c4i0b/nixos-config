@@ -293,6 +293,7 @@ in
     micro
     superfile
     tealdeer
+    television
     topgrade
     nix-search
 
