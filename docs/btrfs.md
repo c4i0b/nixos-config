@@ -1,6 +1,29 @@
 # Btrfs on NixOS
 
-Source: https://wiki.nixos.org/wiki/Btrfs
+Sources:
+- https://wiki.nixos.org/wiki/Btrfs
+- https://btrfs.readthedocs.io/en/latest/btrfs-man5.html (mount options)
+
+## Mount options
+
+Recommended `fileSystems.*.options` for btrfs on NixOS:
+
+```nix
+fileSystems."/".options     = [ "compress=zstd" "noatime" ];
+fileSystems."/home".options = [ "subvol=home" "compress=zstd" "noatime" ];
+fileSystems."/nix".options  = [ "subvol=nix"  "compress=zstd" "noatime" ];
+```
+
+| Option | Status | Why |
+|--------|--------|-----|
+| `compress=zstd` | **set it** | Transparent compression; new writes only — see ./btrfs-compress-existing.md |
+| `noatime` | **set it** | Stops access-time updates on every read. Critical with snapshots: `relatime` + freshly-snapshotted old files triggers COW writes *per file* (btrfs(5)). |
+| `ssd` | auto | Detected for non-rotational devices; no need to set |
+| `discard=async` | auto | Default since kernel 6.2 when device supports TRIM |
+| `space_cache=v2` | auto | Default free-space tree |
+
+Avoid: `nodatacow`/`nodatasum` (disables compression + checksums), `commit=N>30`
+(crash risk), `ssd_spread` (layout tuning dropped in 4.14, no modern benefit).
 
 ## Subvolume management
 
