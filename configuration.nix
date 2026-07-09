@@ -286,6 +286,7 @@ in
     nodejs
     opencode
     python3
+    uv
 
     # --- CLI ---
     btop
