@@ -138,8 +138,6 @@ in
   services.xserver.videoDrivers = [ "nvidia" ];
 
   boot.extraModprobeConfig = ''
-    # NVIDIA open DRM: KWin crash workaround (KDE bug 520842); remove on Plasma 6.7+
-    options nvidia-drm color_pipeline=0
     # Disable HDA Intel power saving (idle audio pops)
     options snd_hda_intel power_save=0 power_save_controller=N
   '';
