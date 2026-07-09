@@ -15,8 +15,17 @@ on disk. Run a one-time defrag to compress what's already there.
 sudo btrfs filesystem defrag -r -czstd /path
 ```
 - `-r` recursive, `-czstd` compress with zstd (level 3, the default — same as the mount option).
-- Run per subvolume (`/`, `/home`, `/nix`). Safe on a live system.
+- Safe on a live system.
 - Errors on `/proc`, `/sys`, open files, and the read-only `/nix/store` are expected and harmless.
+
+## What to defrag on NixOS
+Only `/home` truly needs it — that's where pre-compression user data lives.
+
+- **`/home`** — defrag it (the one-time step below).
+- **`/nix`** — **skip it.** `/nix/store` is read-only at runtime (defrag can't touch it), and it
+  self-heals: new store paths are born compressed, and `nix.gc` (daily, `--delete-older-than 1d`)
+  purges the old uncompressed ones within a few upgrade cycles. No defrag ever needed.
+- **`/`** — optional; mostly symlinks into the store, so it's tiny.
 
 ## ⚠ Snapshots pin old extents (the usual reason space doesn't drop)
 > "Defragmentation does not preserve extent sharing, e.g. files created by **cp --reflink** or
@@ -49,8 +58,6 @@ df -h /
 ## Notes
 - Free space can rise during defrag (new extents written before old are freed) — keep plenty of
   free space; it settles after `sync`.
-- `/nix/store` is mounted read-only at runtime, so its files won't defrag in-place. Don't worry:
-  store paths written after enabling compression are already compressed, and the store refreshes
-  naturally with upgrades.
-- This is a **one-time** fix. Going forward, the `compress=zstd` mount option handles everything.
-  To get it right at install time instead, see ./fresh-deploy.md.
+- This is a **one-time** fix for `/home`. Going forward, the `compress=zstd` mount option handles
+  everything; `/nix/store` keeps refreshing compressed on each upgrade. To get compression from
+  byte 0 on a fresh install instead, see ./fresh-deploy.md.
