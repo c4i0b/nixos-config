@@ -33,6 +33,7 @@ sudo nixos-rebuild switch
 
 ## Reference Docs
 - Plymouth boot splash: ./plymouth.md
+- Audio (PipeWire + kernel modprobe): ./audio.md
 
 ## NixOS Wiki
 - https://wiki.nixos.org/
