@@ -317,6 +317,14 @@ in
     podman-compose
     podman-tui
 
+    # --- Fun ---
+    cmatrix
+    hollywood
+    no-more-secrets
+    peaclock
+    terminal-parrot
+    unimatrix
+
     # --- GUI Apps ---
     gnome-disk-utility
     btrfs-assistant
