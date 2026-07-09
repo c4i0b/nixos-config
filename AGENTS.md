@@ -33,7 +33,7 @@ Prefix with `unstable.` inside `environment.systemPackages` for unstable package
 - 5: Hardware (NVIDIA open modules, Storage, Btrfs scrub, Bluetooth)
 - 6: Users
 - 7: Security & Package Overrides
-- 8: Services (PipeWire, Flatpak, btrbk snapshots, VirtualBox)
+- 8: Services (PipeWire, Flatpak, Snapper snapshots, VirtualBox)
 - 9: Programs / NixOS modules (fish, steam, gamemode)
 - 10: Virtualization (Podman with dockerCompat, containers)
 - 11: Systemd (tmpfiles, topgrade user service/timer)
@@ -56,7 +56,7 @@ Prefix with `unstable.` inside `environment.systemPackages` for unstable package
 - `docs/nvidia-gaming.md` — NVIDIA + gaming setup
 - `docs/systemd.md` — systemd services & timers (system and user level)
 - `docs/channel-branches.md` — NixOS channel branches reference
-- `docs/btrbk.md` — btrbk snapshot setup
+- `docs/snapper.md` — Snapper snapshot setup
 - `docs/bluetooth.md` — Bluetooth configuration notes
 - `docs/btrfs.md` — Btrfs filesystem notes
 - `docs/btrfs-compress-existing.md` — compress existing data (defrag)

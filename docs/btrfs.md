@@ -45,11 +45,13 @@ Check status: `btrfs scrub status /`
 
 ## Snapshots
 
+Automated snapshots are managed by Snapper (see ./snapper.md). Manual raw commands:
+
 ```bash
 # Read-only snapshot
-btrfs subvolume snapshot -r /home /snapshots/home_$(date +%F)
+btrfs subvolume snapshot -r /home /tmp/home_$(date +%F)
 
 # Restore
 btrfs subvolume delete /home
-btrfs subvolume snapshot /snapshots/home_2025-01-01 /home
+btrfs subvolume snapshot /tmp/home_2025-01-01 /home
 ```

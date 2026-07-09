@@ -198,17 +198,16 @@ in
     ${pkgs.flatpak}/bin/flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
   '';
 
-  # -- Btrfs snapshots --
-  services.btrbk.instances."home" = {
-    onCalendar = "hourly";
-    settings = {
-      snapshot_preserve_min = "1w";
-      snapshot_preserve = "2w";
-      volume."/" = {
-        snapshot_dir = "/snapshots";
-        subvolume = "home";
-      };
-    };
+  # -- Btrfs snapshots (Snapper) --
+  services.snapper.configs."home" = {
+    SUBVOLUME = "/home";
+    TIMELINE_CREATE = true;
+    TIMELINE_CLEANUP = true;
+    TIMELINE_LIMIT_HOURLY = "24";
+    TIMELINE_LIMIT_DAILY = "7";
+    TIMELINE_LIMIT_WEEKLY = "0";
+    TIMELINE_LIMIT_MONTHLY = "0";
+    TIMELINE_LIMIT_YEARLY = "0";
   };
 
   # -- VirtualBox --
@@ -234,10 +233,6 @@ in
   # ============================================================================
   # 11. Systemd
   # ============================================================================
-
-  systemd.tmpfiles.rules = [
-    "d /snapshots 0755 root root"
-  ];
 
   # -- User services (topgrade) --
   systemd.user.services.topgrade-user = {
@@ -304,7 +299,6 @@ in
 
     # --- GUI Apps ---
     gnome-disk-utility
-    snapper
     btrfs-assistant
 
     # --- Gaming ---

@@ -40,8 +40,13 @@ services.snapper.configs."home" = {
 };
 ```
 
-The module auto-creates the `.snapshots` subvolume inside the configured
-SUBVOLUME (e.g. `/home/.snapshots`). No tmpfiles rule needed.
+The NixOS module writes `/etc/snapper/configs/<name>` but does **not** create the
+`.snapshots` subvolume — create it once manually after first deploy:
+```bash
+sudo btrfs subvolume create /home/.snapshots
+sudo chmod 750 /home/.snapshots
+```
+It must be a btrfs subvolume (not a plain directory) owned by root.
 
 ### Global options
 

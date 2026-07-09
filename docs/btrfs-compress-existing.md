@@ -23,19 +23,20 @@ sudo btrfs filesystem defrag -r -czstd /path
 > existing on multiple snapshots. Due to that the data space consumption may increase."
 > — btrfs docs
 
-If a subvolume has snapshots (btrbk, snapper, timeshift…), defrag writes new compressed extents but
+If a subvolume has snapshots (snapper, timeshift…), defrag writes new compressed extents but
 the **old ones stay referenced by the snapshots**, so space is NOT freed (and can temporarily rise).
-Reclaim it like this (example for `/home` with btrbk):
+Reclaim it like this (example for `/home` managed by Snapper — see ./snapper.md):
 
 ```bash
-# 1. stop the snapshot creator so it doesn't snapshot mid-defrag
-sudo systemctl stop btrbk-home.timer btrbk-home.service
+# 1. stop snapper so it doesn't snapshot mid-defrag
+sudo systemctl stop snapper-timeline.timer snapper-cleanup.timer
 # 2. delete the snapshots of the subvolume you're defragging
-sudo btrfs subvolume delete /snapshots/home.*
+sudo snapper -c home list            # note the last snapshot number N
+sudo snapper -c home delete 1-N      # range delete (replace N)
 # 3. defrag
 sudo btrfs filesystem defrag -r -czstd /home
-# 4. restart the creator — new snapshots are of the now-compressed data
-sudo systemctl start btrbk-home.timer
+# 4. restart snapper — new snapshots are of the now-compressed data
+sudo systemctl start snapper-timeline.timer snapper-cleanup.timer
 ```
 
 ## Verify
