@@ -320,7 +320,6 @@ in
     # --- Fun ---
     cmatrix
     hollywood
-    no-more-secrets
     peaclock
     terminal-parrot
     unimatrix
