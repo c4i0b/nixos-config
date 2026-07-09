@@ -313,7 +313,9 @@ in
 
     # --- Containers ---
     distrobox
+    oxker
     podman-compose
+    podman-tui
 
     # --- GUI Apps ---
     gnome-disk-utility
