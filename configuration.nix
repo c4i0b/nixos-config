@@ -133,12 +133,13 @@ in
   fileSystems."/mnt/KingFast_EXT4" = {
     device = "/dev/disk/by-label/KingFast_EXT4";
     fsType = "ext4";
+    options = [ "noatime" ];
   };
 
   # -- Btrfs compression (zstd) --
-  fileSystems."/".options = [ "compress=zstd" ];
-  fileSystems."/home".options = [ "subvol=home" "compress=zstd" ];
-  fileSystems."/nix".options = [ "subvol=nix" "compress=zstd" ];
+  fileSystems."/".options = [ "compress=zstd" "noatime" ];
+  fileSystems."/home".options = [ "subvol=home" "compress=zstd" "noatime" ];
+  fileSystems."/nix".options = [ "subvol=nix" "compress=zstd" "noatime" ];
 
   # -- Zram swap --
   zramSwap = {
