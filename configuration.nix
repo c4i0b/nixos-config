@@ -318,10 +318,6 @@ in
     podman-tui
 
     # --- Fun ---
-    cmatrix
-    hollywood
-    peaclock
-    terminal-parrot
     unimatrix
 
     # --- GUI Apps ---
