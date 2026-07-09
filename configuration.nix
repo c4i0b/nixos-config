@@ -212,6 +212,7 @@ in
   system.activationScripts.snapper-home = ''
     ${pkgs.btrfs-progs}/bin/btrfs subvolume show /home/.snapshots >/dev/null 2>&1 \
       || ${pkgs.btrfs-progs}/bin/btrfs subvolume create /home/.snapshots
+    chmod 750 /home/.snapshots
   '';
 
   # -- VirtualBox --

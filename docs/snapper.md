@@ -47,10 +47,11 @@ directory triggers an IO Error). Create it idempotently via an activation script
 system.activationScripts.snapper-home = ''
   ${pkgs.btrfs-progs}/bin/btrfs subvolume show /home/.snapshots >/dev/null 2>&1 \
     || ${pkgs.btrfs-progs}/bin/btrfs subvolume create /home/.snapshots
+  chmod 750 /home/.snapshots
 '';
 ```
-It must be owned by root (default when created as root). NixOS has no native
-declarative subvolume creation; `disko` is the alternative for full layout management.
+Owned by root (default); `chmod 750` restricts access since it lives under `/home`.
+NixOS has no native declarative subvolume creation; `disko` is the alternative for full layout management.
 
 ### Global options
 
