@@ -179,9 +179,6 @@ in
     extraGroups = [ "networkmanager" "wheel" "vboxusers" "podman" ];
     subUidRanges = [{ startUid = 65536; count = 65536; }];
     subGidRanges = [{ startGid = 65536; count = 65536; }];
-    packages = with pkgs; [
-      kdePackages.kate
-    ];
   };
 
   # ============================================================================
@@ -342,7 +339,6 @@ in
     # --- GUI Apps ---
     gnome-disk-utility
     btrfs-assistant
-
     # --- Gaming ---
     ludusavi
     lutris
