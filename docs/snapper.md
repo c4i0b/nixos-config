@@ -41,12 +41,16 @@ services.snapper.configs."home" = {
 ```
 
 The NixOS module writes `/etc/snapper/configs/<name>` but does **not** create the
-`.snapshots` subvolume — create it once manually after first deploy:
-```bash
-sudo btrfs subvolume create /home/.snapshots
-sudo chmod 750 /home/.snapshots
+`.snapshots` subvolume. Snapper requires it to be a real btrfs subvolume (a plain
+directory triggers an IO Error). Create it idempotently via an activation script:
+```nix
+system.activationScripts.snapper-home = ''
+  ${pkgs.btrfs-progs}/bin/btrfs subvolume show /home/.snapshots >/dev/null 2>&1 \
+    || ${pkgs.btrfs-progs}/bin/btrfs subvolume create /home/.snapshots
+'';
 ```
-It must be a btrfs subvolume (not a plain directory) owned by root.
+It must be owned by root (default when created as root). NixOS has no native
+declarative subvolume creation; `disko` is the alternative for full layout management.
 
 ### Global options
 

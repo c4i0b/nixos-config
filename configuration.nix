@@ -209,6 +209,10 @@ in
     TIMELINE_LIMIT_MONTHLY = "0";
     TIMELINE_LIMIT_YEARLY = "0";
   };
+  system.activationScripts.snapper-home = ''
+    ${pkgs.btrfs-progs}/bin/btrfs subvolume show /home/.snapshots >/dev/null 2>&1 \
+      || ${pkgs.btrfs-progs}/bin/btrfs subvolume create /home/.snapshots
+  '';
 
   # -- VirtualBox --
   virtualisation.virtualbox.host.enable = true;
