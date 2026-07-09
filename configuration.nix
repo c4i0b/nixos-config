@@ -294,8 +294,11 @@ in
     uv
 
     # --- CLI ---
+    bat
     btop
     fastfetch
+    fd
+    fzf
     lazygit
     micro
     superfile
