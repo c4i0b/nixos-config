@@ -296,6 +296,7 @@ in
     # --- CLI ---
     bat
     btop
+    eza
     fastfetch
     fd
     fzf
