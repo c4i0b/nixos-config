@@ -283,6 +283,7 @@ in
     # --- Development ---
     gh
     git
+    nodejs
     opencode
     python3
 
