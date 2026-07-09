@@ -294,7 +294,7 @@ in
     lazygit
     micro
     superfile
-    taskwarrior
+    taskwarrior3
     tealdeer
     television
     topgrade
