@@ -289,6 +289,7 @@ in
     # --- CLI ---
     btop
     fastfetch
+    lazygit
     tealdeer
     topgrade
     nix-search
