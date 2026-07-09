@@ -191,6 +191,13 @@ in
   # ============================================================================
   nixpkgs.config.allowUnfree = true;
 
+  # KDE unstable (overlay plasma6 module + KDE apps onto unstable)
+  nixpkgs.overlays = [
+    (final: prev: {
+      kdePackages = unstable.kdePackages;
+    })
+  ];
+
   # ============================================================================
   # 8. Services
   # ============================================================================
