@@ -235,6 +235,7 @@ in
 
   # -- VirtualBox --
   virtualisation.virtualbox.host.enable = true;
+  environment.variables.VBOX_DISABLE_HARDENING = "1";
 
   # ============================================================================
   # 9. Programs (enabled via NixOS modules)
