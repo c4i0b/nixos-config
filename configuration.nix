@@ -29,7 +29,12 @@ in
 
   boot.consoleLogLevel = 3;
   boot.initrd.verbose = false;
-  boot.kernelParams = [ "quiet" "rd.udev.log_level=3" "rd.systemd.show_status=auto" ];
+  boot.kernelParams = [
+    "quiet"
+    "rd.udev.log_level=3"
+    "rd.systemd.show_status=auto"
+    "clearcpuid=514"   # Disable UMIP
+  ];
 
   # ============================================================================
   # 2. Networking
