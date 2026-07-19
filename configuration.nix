@@ -340,7 +340,7 @@ in
     btrfs-assistant
     # --- Gaming ---
     ludusavi
-    lutris
+    heroic
     mangohud
     goverlay
     wine
