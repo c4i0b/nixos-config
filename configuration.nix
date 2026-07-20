@@ -335,7 +335,7 @@
 
     # --- Gaming ---
     ludusavi
-    heroic
+    faugus-launcher
     mangohud
     goverlay
     wine
