@@ -4,7 +4,7 @@ Official docs: https://wiki.nixos.org/wiki/Linux_kernel
 Manual: https://nixos.org/manual/nixos/stable/#sec-kernel-config
 
 ## Active in current config
-- `boot.kernelPackages = unstable.linuxPackages_latest` — latest mainline from unstable
+- `boot.kernelPackages = pkgs.linuxPackages_latest` — latest mainline kernel
 - `boot.kernelParams = [ "quiet" "rd.udev.log_level=3" "rd.systemd.show_status=auto" "mglru=on" ]`
 - All other kernel options use NixOS defaults
 
@@ -58,7 +58,7 @@ boot.kernel.sysctl = {
 
 ```nix
 nixpkgs.config.packageOverrides = pkgs: {
-  linux_6_6 = pkgs.linux_6_6.override {
+  linux_custom = pkgs.linux_6_6.override {  # replace linux_6_6 with desired kernel
     extraConfig = ''
       KGDB y
       PREEMPT y

@@ -29,9 +29,7 @@ trust <addr>
 
 ## Audio codecs (AAC, APTX, LDAC)
 
-```nix
-hardware.pulseaudio.package = pkgs.pulseaudioFull;
-```
+For PipeWire (default), add `hardware.pulseaudio.enable = true` alongside PipeWire for codec support, or use `hardware.pulseaudio.package` if explicitly using PulseAudio.
 
 ## Battery level
 

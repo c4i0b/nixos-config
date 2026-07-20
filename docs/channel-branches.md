@@ -4,10 +4,10 @@ Nix channels provide a structured and reliable way to access package collections
 
 ## The official channels
 
-- **Stable channels** (e.g. `nixos-26.05`): conservative updates for bug fixes and security.
-- **Unstable channels** (e.g. `nixos-unstable`, `nixpkgs-unstable`): follow master branch, latest tested updates.
+- **Stable channels** (e.g. `nixos-26.05`, `nixos-26.11`): conservative updates for bug fixes and security. Check https://nixos.org/download/ for current stable.
+- **Unstable channels** (`nixos-unstable`, `nixpkgs-unstable`): follow master branch, latest tested updates.
 - **Large channels**: updated after Hydra builds full Nixpkgs.
-- **Small channels** (e.g. `nixos-26.05-small`): updated faster with fewer binary packages.
+- **Small channels** (e.g. `nixos-*-small`): updated faster with fewer binary packages.
 
 ## nix-channel commands
 

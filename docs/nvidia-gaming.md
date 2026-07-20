@@ -6,10 +6,10 @@ This NixOS config uses:
 - `hardware.nvidia.powerManagement.enable = true` – GPU power-down when unused
 - `hardware.nvidia.nvidiaSettings = true` – NVIDIA control panel GUI (`nvidia-settings`)
 - `hardware.graphics.enable32Bit = true` – required for Steam/Wine/Proton
-- `boot.kernelPackages = unstable.linuxPackages_latest` – kernel + NVIDIA drivers from unstable channel (610.43.02)
+- `boot.kernelPackages = pkgs.linuxPackages_latest` – latest mainline kernel
 - `programs.steam.enable = true` – enables Steam + extra Steam-related packages
 - `programs.gamemode.enable = true` – enables the gamemode daemon
-- Lutris, Wine, Winetricks, GOverlay, MangoHud installed as system packages
+- Wine, Winetricks, GOverlay, MangoHud installed as system packages
 
 ## External resources
 
