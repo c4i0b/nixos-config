@@ -19,11 +19,8 @@ Faster & channel-compatible alternative to `nix search` / `nix-env -qaP`.
 - This is a git repo at `git@github.com:c4i0b/nixos-config.git`
 
 ## Channels (not flakes)
+- Main channel: `nixos-unstable` (whole system on unstable)
 - Prefer channels over flakes
-```nix
-unstable = import <nixos-unstable/nixpkgs> { config = { allowUnfree = true; }; };
-```
-Prefix with `unstable.` inside `environment.systemPackages` for unstable packages.
 
 ## Sections (numbered 1–13 in configuration.nix)
 - 1: Boot & Kernel (Limine, Plymouth, latest kernel)
@@ -37,8 +34,8 @@ Prefix with `unstable.` inside `environment.systemPackages` for unstable package
 - 9: Programs / NixOS modules (fish, steam, gamemode)
 - 10: Virtualization (Podman with dockerCompat, containers)
 - 11: Systemd (tmpfiles, topgrade user service/timer)
-- 12: System Packages (organized by category; prefix `unstable.` for nixos-unstable)
-- 13: System State & Maintenance (autoUpgrade, nix gc)
+- 12: System Packages (organized by category)
+- 13: System State & Maintenance (autoUpgrade on nixos-unstable, nix gc)
 
 ## User & host
 - Hostname: `nixos`

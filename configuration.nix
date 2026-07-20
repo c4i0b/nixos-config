@@ -1,10 +1,5 @@
 { config, pkgs, ... }:
 
-let
-  # Unstable channel
-  unstable = import <nixos-unstable/nixpkgs> { config = { allowUnfree = true; }; };
-in
-
 {
   imports = [
     ./hardware-configuration.nix
@@ -19,7 +14,7 @@ in
     quiet: yes
   '';
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = unstable.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   boot.plymouth.enable = true;
   boot.plymouth.theme = "spin";
@@ -281,7 +276,6 @@ in
 
   # ============================================================================
   # 12. System Packages (organized by category)
-  #    Stable packages in main list, unstable packages in ++ block
   # ============================================================================
   environment.systemPackages = with pkgs; [
     # --- Spelling / Dictionaries ---
@@ -292,10 +286,10 @@ in
     aspellDicts.pt_BR
 
     # --- GUI Apps ---
-    (unstable.kdePackages.spectacle.override {
+    (kdePackages.spectacle.override {
       tesseractLanguages = [ "eng" "por" ];
     })
-  ] ++ (with unstable; [
+
     # --- Development ---
     gh
     git
@@ -338,6 +332,7 @@ in
     # --- GUI Apps ---
     gnome-disk-utility
     btrfs-assistant
+
     # --- Gaming ---
     ludusavi
     heroic
@@ -350,7 +345,7 @@ in
 
     # --- Multimedia ---
     pear-desktop
-  ]);
+  ];
 
   # ============================================================================
   # 13. System State & Maintenance
