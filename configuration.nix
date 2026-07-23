@@ -261,7 +261,7 @@
     description = "Topgrade - user updates";
     serviceConfig = {
       Type = "oneshot";
-      ExecCondition = "${pkgs.iputils}/bin/ping -c 1 -W 5 1.1.1.1";
+      ExecCondition = "${pkgs.iputils}/bin/ping -c 1 -W 5 8.8.8.8";
       ExecStart = "${pkgs.topgrade}/bin/topgrade --disable system --disable firmware --yes --no-ask-retry --auto-retry 3";
       Nice = 19;
       IOSchedulingClass = "idle";
