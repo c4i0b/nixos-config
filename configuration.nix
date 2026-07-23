@@ -365,9 +365,10 @@
 
   system.autoUpgrade = {
     enable = true;
-    dates = "02:00";
+    dates = "daily";
     randomizedDelaySec = "45min";
     allowReboot = false;
+    persistent = true;
   };
 
   nix.gc = {
