@@ -259,8 +259,13 @@
   # -- User services (topgrade) --
   systemd.user.services.topgrade-user = {
     description = "Topgrade - user updates";
+    unitConfig = {
+      After = [ "network-online.target" ];
+      Wants = [ "network-online.target" ];
+    };
     serviceConfig = {
       Type = "oneshot";
+      ExecCondition = "${pkgs.bash}/bin/bash -c '${pkgs.iputils}/bin/ping -c 1 -W 5 1.1.1.1'";
       ExecStart = "${pkgs.topgrade}/bin/topgrade --disable system --disable firmware --yes --no-ask-retry --auto-retry 3";
       Nice = 19;
       IOSchedulingClass = "idle";
@@ -273,8 +278,8 @@
     description = "Topgrade - user updates timer";
     wantedBy = [ "timers.target" ];
     timerConfig = {
-      OnCalendar = "daily";
-      RandomizedDelaySec = "30min";
+      OnBootSec = "5m";
+      OnUnitActiveSec = "1d";
       Persistent = true;
     };
   };
@@ -321,6 +326,7 @@
 
     # --- System Tools ---
     gdu
+    iputils
     jq
     libnotify
     unzip
