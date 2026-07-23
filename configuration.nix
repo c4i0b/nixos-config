@@ -374,6 +374,7 @@
   nix.gc = {
     automatic = true;
     dates = "daily";
+    randomizedDelaySec = "45min";
     options = "--delete-older-than 1d";
   };
 
