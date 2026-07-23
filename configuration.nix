@@ -36,6 +36,7 @@
   # ============================================================================
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
+  networking.modemmanager.enable = false;
   # networking.wireless.enable = true;
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -250,6 +251,10 @@
   # ============================================================================
   # 11. Systemd
   # ============================================================================
+
+  # -- Disable unnecessary KDE services --
+  systemd.user.services.kaccess.enable = false;
+  systemd.user.services.kactivitymanagerd.enable = false;
 
   # -- User services (topgrade) --
   systemd.user.services.topgrade-user = {
