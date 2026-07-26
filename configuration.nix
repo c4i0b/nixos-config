@@ -210,22 +210,21 @@
     ${pkgs.flatpak}/bin/flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
   '';
 
-  # -- Btrfs snapshots (Snapper) --
-  services.snapper.configs."home" = {
-    SUBVOLUME = "/home";
-    TIMELINE_CREATE = true;
-    TIMELINE_CLEANUP = true;
-    TIMELINE_LIMIT_HOURLY = "24";
-    TIMELINE_LIMIT_DAILY = "7";
-    TIMELINE_LIMIT_WEEKLY = "0";
-    TIMELINE_LIMIT_MONTHLY = "0";
-    TIMELINE_LIMIT_YEARLY = "0";
+  # -- Btrfs snapshots (btrbk) --
+  services.btrbk.instances."home" = {
+    onCalendar = "hourly";
+    snapshotOnly = true;
+    settings = {
+      snapshot_preserve_min = "24h";
+      snapshot_preserve = "24h";
+      volume = {
+        "/" = {
+          snapshot_dir = "/snapshots";
+          subvolume = "home";
+        };
+      };
+    };
   };
-  system.activationScripts.snapper-home = ''
-    ${pkgs.btrfs-progs}/bin/btrfs subvolume show /home/.snapshots >/dev/null 2>&1 \
-      || ${pkgs.btrfs-progs}/bin/btrfs subvolume create /home/.snapshots
-    chmod 750 /home/.snapshots
-  '';
 
   # -- VirtualBox --
   virtualisation.virtualbox.host.enable = true;
@@ -338,7 +337,6 @@
 
     # --- GUI Apps ---
     gnome-disk-utility
-    btrfs-assistant
 
     # --- Gaming ---
     ludusavi

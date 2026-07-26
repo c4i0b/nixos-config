@@ -68,7 +68,7 @@ Check status: `btrfs scrub status /`
 
 ## Snapshots
 
-Automated snapshots are managed by Snapper (see ./snapper.md). Manual raw commands:
+Automated snapshots are managed by btrbk (see ./btrbk.md). Legacy: Snapper (see ./snapper.md). Manual raw commands:
 
 ```bash
 # Read-only snapshot
