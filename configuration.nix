@@ -225,6 +225,9 @@
       };
     };
   };
+  system.activationScripts.btrbk-default-conf = ''
+    ln -sfn /etc/btrbk/home.conf /etc/btrbk/btrbk.conf
+  '';
 
   # -- VirtualBox --
   virtualisation.virtualbox.host.enable = true;
