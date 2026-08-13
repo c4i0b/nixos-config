@@ -6,6 +6,9 @@ result-*
 *.bak
 *.backup
 
+# Machine-local hardware config (imported from /etc/nixos, not committed)
+hardware-configuration.nix
+
 # Editor swap/temp files
 *.swp
 *.swo

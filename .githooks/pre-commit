@@ -2,7 +2,7 @@
 set -euo pipefail
 
 allowed_ext=".nix .md"
-allowed_names=".gitignore"
+allowed_names=".gitignore flake.lock"
 allowed_prefix=".githooks/"
 
 staged=$(git diff --cached --name-only --diff-filter=ACM)
@@ -45,10 +45,10 @@ for file in $staged; do
 done
 
 if [ -n "$blocked" ]; then
-    echo -e "\n[pre-commit] Bloqueado: apenas arquivos .nix e .md sao permitidos neste projeto."
-    echo -e "\nArquivos rejeitados:\n"
+    echo -e "\n[pre-commit] Blocked: only .nix, .md and flake.lock files are allowed in this project."
+    echo -e "\nRejected files:\n"
     echo -e "$blocked"
-    echo "Para forcar o commit: git commit --no-verify"
+    echo "To force the commit: git commit --no-verify"
     exit 1
 fi
 
