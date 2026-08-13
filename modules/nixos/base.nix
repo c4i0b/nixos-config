@@ -18,15 +18,28 @@
 
   nix.optimise.automatic = true;
 
-  # Auto-apply the latest commit on main from GitHub on every machine.
-  # --refresh re-resolves main each run; locked inputs (nixpkgs) stay pinned.
-  # A failed build is safe (the machine keeps its current generation). A build
-  # that succeeds but is broken at runtime DOES get applied — roll back to a
-  # previous generation (gc keeps 7d so rollback targets survive).
+  # Fully autonomous upgrades: pull the latest commit on main AND bump every
+  # input to the latest commit on its branch (--override-flake + --refresh) —
+  # rolling nixpkgs/home-manager, applied daily. A failed build is safe (the
+  # machine keeps its current generation); a build that succeeds but is broken at
+  # runtime DOES get applied — roll back to a previous generation (gc keeps 7d).
+  # A plain manual rebuild uses the committed flake.lock; to test the latest
+  # locally, run `nix flake update` first.
   system.autoUpgrade = {
     enable = true;
     flake = "github:c4i0b/nixos-config/main#nixos";
-    flags = [ "--refresh" ];
+    flags = [
+      "--refresh"
+      "--override-flake"
+      "nixpkgs"
+      "github:NixOS/nixpkgs/nixos-26.05"
+      "--override-flake"
+      "nixpkgs-unstable"
+      "github:NixOS/nixpkgs/nixos-unstable"
+      "--override-flake"
+      "home-manager"
+      "github:nix-community/home-manager/release-26.05"
+    ];
     dates = "daily";
     randomizedDelaySec = "45min";
     allowReboot = false;

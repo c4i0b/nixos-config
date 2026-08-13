@@ -64,4 +64,4 @@ nix flake update nixpkgs    # update a single input
 
 ## Notes
 - nixpkgs was moved from `nixos-unstable` (channel) to `nixos-26.05` (flake). Some packages that existed only in unstable may need to be removed or the input switched back to unstable.
-- `system.autoUpgrade` is enabled: each machine pulls the latest commit on `main` from GitHub daily and applies it (`--refresh`, inputs stay pinned). Failed builds are safe (no switch); a broken-but-building change gets applied — roll back via a previous generation. Tune cadence/reboot in `modules/nixos/base.nix`.
+- `system.autoUpgrade` is enabled: each machine pulls the latest `main` commit daily and applies it, bumping all inputs to the latest of their branches (`--override-flake --refresh`) — fully autonomous/rolling. Failed builds are safe (no switch); a broken-but-building change gets applied — roll back via a previous generation. Tune in `modules/nixos/base.nix`.
